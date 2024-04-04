@@ -36,7 +36,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const menuItems = document.querySelectorAll('.menu-items a');
     menuItems.forEach(item => {
         item.addEventListener('click', () => {
-            navbar.style.display = "none";
+            if (window.innerWidth <= 768) {
+                navbar.style.display = "none";
+            }
             toggler.style.border = "none";
         });
     });

@@ -492,12 +492,23 @@ footer {
     padding: 2rem;
 }
 
+.quote {
+    width: 80%;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
 .details p {
     display: flex;
     justify-content: baseline;
     align-items: baseline;
     line-height: 2;
     font-size: 1.2rem;
+}
+
+#sign-off {
+    padding-bottom: .5rem;
 }
 
 /* Media Queries */
@@ -591,12 +602,20 @@ footer {
     }
 
     /* about specific queries */
+    #about {
+        padding: .5rem;
+    }
+    
     .row {
         display: flex;
         flex-direction: column;
     }
 
     /* packages specific queries */
+    #packages {
+        padding: .4rem;
+    }
+
     #packages-content {
         overflow: hidden;
         display: grid;
@@ -617,5 +636,14 @@ footer {
     
     #contact-image {
         order: 2;
+    }
+
+    /* footer specific queries */
+    footer {
+        padding: .2rem;
+    }
+    
+    .details p {
+        font-size: 1rem;
     }
 }

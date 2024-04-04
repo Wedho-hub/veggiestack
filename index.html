@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veggie Stack</title>
+
+    <!-- google fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" 
+rel="stylesheet">
+
+<!-- custom css link -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- header section starts -->
+    <header>
+        <div class="logo">
+            <a href="#home"><img src="images\veggie-icon.png" alt="vegetables in a basket icon"></a>
+            <h3>veggie stack</h3>
+        </div>
+        <button id="toggler" type="button" title="menu-toggler" onclick="toggleNavbar()">
+            <ion-icon name="menu" title="open/close"></ion-icon>
+        </button>
+        <nav id="navbar">
+            <ul class="menu-list">
+                <li class="menu-items"><a href="#home">home</a></li>
+                <li class="menu-items"><a href="#about">about</a></li>
+                <li class="menu-items"><a href="#packages">packages</a></li>
+                <li class="menu-items"><a href="#contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- header section ends -->
+    
+    <!-- main section starts -->
+    <main>
+        <!-- home section starts -->
+        <section id="home">
+            <div id="welcome-text">
+                <div class="text-container">
+                    <h1>Where is the nearest fruit & vegetable market?</h1>
+                    <p>Veggie Stack is the farm and the market brought to your doorstep. We are just a click away.</p>
+                </div>
+                <button type="button" class="sliding-bg" title="order-now" id="order-now" onclick=""> &nbsp;order now&nbsp; </button>
+            </div>
+            <div id="home-image">
+                <img src="https://static.cosaporto.it/media/2020/03/vegfruit-basket.jpg" 
+                alt="basket with fruit and veg">
+            </div>
+            <div id="home-social">
+                <a href="#" title="instagram"><ion-icon name="logo-instagram" class="social-icon"></ion-icon></a>
+                <a href="#" title="facebook"><ion-icon name="logo-facebook" class="social-icon"></ion-icon></a>
+                <a href="#" title="linkedin"><ion-icon name="logo-linkedin" class="social-icon"></ion-icon></a>
+            </div>
+        </section>
+        <!-- home section ends -->
+        
+        <!--about section starts -->
+        <section id="about">
+            <h2 id="about-header" class="section-header">About Us</h2>
+            <div class="content row">
+                <div id="about-text" class="col">
+                    <article id="mission">
+                        <h3>Our Mission:</h3>
+                        <p>"Our main agenda is to deliver fresh fruits and 
+                            vegetables. We believe in giving our clients the opportunity and platform to influence our product offerings, ensuring that we 
+                            provide a diverse and tailored range of produce that meets their preferences and needs."
+                        </p>
+                    </article>
+                    <hr>
+                    <article id="core-values">
+                        <h3>Core Values:</h3>
+                        <p>
+                            <ion-icon name="diamond" class="value-icon"></ion-icon>&nbsp;
+                            <span>Customer Satisfaction:</span>
+                            "We are committed to delivering the highest quality..."
+                            <span>
+                                <button type="button" class="readmore-btn" data-modal="modal-custSati">read more<ion-icon name="chevron-forward"></ion-icon></button>
+                            </span>
+                        </p>
+                        <div id="modal-custSati" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p> "We are committed to delivering the highest quality fruits and vegetables, sourced directly from trusted local farmers and producers. Our dedication to quality ensures that every item in our catalog meets the highest standards of freshness, taste, and nutritional value."</p>
+                            </div>
+                        </div>
+
+                        <p>
+                            <ion-icon name="bulb" class="value-icon"></ion-icon>&nbsp; 
+                            <span>Innovation:</span> "We embrace innovation to constantly improve and enhance our services...."
+                            <span>
+                                <button type="button" class="readmore-btn" data-modal="modal-innov">read more<ion-icon name="chevron-forward"></ion-icon></button>
+                            </span>
+                        </p>
+                        <div id="modal-innov" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p> "We embrace innovation to continuously improve and enhance our services. From state-of-the-art delivery logistics to convenient online ordering options, we are always looking for new ways to make your shopping experience easier, more enjoyable, and more convenient."</p>
+                            </div>
+                        </div>
+                        
+                        <p>
+                            <ion-icon name="people" class="value-icon"></ion-icon>&nbsp; 
+                            <span>Community Engagement:</span> 
+                            "We believe in serving the community through partnerships..."
+                            <span>
+                                <button type="button" class="readmore-btn" data-modal="modal-commEnga">read more<ion-icon name="chevron-forward"></ion-icon></button>
+                            </span>
+                        </p>
+                        <div id="modal-commEnga" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>"We are deeply rooted in our local community and believe in giving back. Through partnerships with local farmers, charitable donations, and community events, we strive to make a positive impact and support the communities we serve."</p>
+                            </div>
+                        </div>
+                    </article>
+                    
+                </div>
+                <div id="about-image" class="col">
+                    <img src="https://indifoodbev.com/wp-content/uploads/2020/11/klesicks_coverphoto_farmer-e1513371366273-696x464.jpg" 
+                    alt="Farmer with a veggie basket in field">
+                </div>
+            </div>
+        </section>
+        <!-- about section ends -->
+        
+        <!-- packages section starts -->
+        <section id="packages">
+            <h1 id="packages-header">Explore Our Packages</h1>
+            <div id="packages-content">
+                <div class="package" id="stir-fry">
+                    <h3>Stir Fry Fiesta</h3>
+                    <img src="https://th.bing.com/th/id/OIP.0mc-CkSlX4DQ39OwqlBhcQHaHa?w=500&h=500&rs=1&pid=ImgDetMain" 
+                    alt="stir fry veggies">
+                    <p>
+                        Includes a variety of veggies perfect for stir-frying, such as bell peppers, broccoli, carrots, and snap peas.
+                    </p>
+                    <button type="button" class="add-btn">add to basket</button>
+                </div>
+                
+                <div class="package" id="seasonal">
+                    <h3>Seasonal Splendor Selection</h3>
+                    <img src="https://health.chosun.com/site/data/img_dir/2023/06/20/2023062002079_0.jpg" 
+                    alt="seasonal fruits and veggies">
+                    <p>
+                        Features a rotating selection of seasonal fruits and veggies sourced fresh from local farms.
+                    </p>
+                    <button type="button" class="add-btn">add to basket</button>
+                </div>
+                
+                <div class="package" id="stew">
+                    <h3>Stew Brew Basket</h3>
+                    <img src="https://www.vegkitchen.com/wp-content/uploads/2022/06/sweet-potato-lentil-soup-9-of-9-500x500.jpg" 
+                    alt="stew veggies">
+                    <p>
+                        Contains root vegetables like potatoes, carrots, onions, and hearty greens ideal for stewing.
+                    </p>
+                    <button type="button" class="add-btn">add to basket</button>
+                </div>
+                
+                <div class="package" id="leafy">
+                    <h3>Leafy Green Team</h3>
+                    <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1mph5v.img?w=600&h=400&m=4&q=55" 
+                    alt="leafy veggies">
+                    <p>
+                        Contains root vegetables like potatoes, carrots, onions, and hearty greens ideal for stewing.
+                    </p>
+                    <button type="button" class="add-btn">add to basket</button>
+                </div>
+                
+                <div class="package" id="medley">
+                    <h3>Fresh Blend Trend</h3>
+                    <img src="https://media.istockphoto.com/photos/glasses-with-fresh-organic-vegetable-and-fruit-juices-picture-id1202072753?b=1&k=20&m=1202072753&s=170667a&w=0&h=XeZeHhe6fpm3C3SJDWYdn_bibom7Q3vJY3I59Quarns=" 
+                    alt="fruits and veggies">
+                    <p>
+                        Combines a variety of fruits and veggies suitable for snacking, salads, or blending into smoothies.
+                    </p>
+                    <button type="button" class="add-btn">add to basket</button>
+                </div>
+                
+                <div class="package" id="grill">
+                    <h3>Grill Thrill Bundle</h3>
+                    <img src="https://www.mashed.com/img/gallery/mistakes-people-make-when-grilling-vegetables/intro-1618854824.jpg" 
+                    alt="braaiand grill veggies">
+                    <p>
+                        Contains root vegetables like potatoes, carrots, onions, and hearty greens ideal for stewing.
+                    </p>
+                    <button type="button" class="add-btn">add to basket</button>
+                </div>
+            </div>
+        </section>
+        <!-- packages section ends -->
+        
+        <!-- contact section starts -->
+        <section id="contact">
+            <h1 id="contact-header">Contact Us</h1>
+            <div id="contact-content">
+                <div id="contact-image">
+                    <img src="https://th.bing.com/th/id/OIP.7-sHYEa7TLkBtn9fowLOdgHaHy?rs=1&pid=ImgDetMain" 
+                    alt="farmer selling greens">
+                </div>
+                <div id="contact-form">
+                    <input type="text" name="name" id="name" placeholder="Full Name">
+                    <input type="email" name="email" id="email" placeholder="example@gmail.com">
+                    <input type="tel" name="phone" id="phone" placeholder="+27123456789">
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="leave a message"></textarea>
+                    <button type="submit" title="submit">Submit</button>
+                </div>
+            </div>
+        </section>
+        <!-- contact section ends -->
+    </main>
+    <!-- main section ends -->
+    
+    <!-- footer section starts -->
+    <footer>
+        <div class="logo">
+            <a href="#home"><img src="images\veggie-icon.png" alt="vegetables in a basket icon"></a>
+            <h3>veggie stack</h3>
+        </div>
+        <div class="details">
+                <p><ion-icon name="mail"></ion-icon>&nbsp; veggiestack@tishbitedigital.com</p>
+                <p><ion-icon name="call"></ion-icon>/<ion-icon name="logo-whatsapp"></ion-icon>&nbsp; +27813872713</p>
+        </div>
+        <div id="sign-off">
+            <em>&copy; Veggie Stack 2024 | Developed by Tishbite digital</em>
+        </div>
+    </footer>
+    <!-- footer section ends -->
+
+
+    <!-- ionic icons tag -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- custom javaScript tag -->
+    <script src="script.js"></script>
+</body>
+</html>

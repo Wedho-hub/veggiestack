@@ -508,7 +508,11 @@ footer {
 }
 
 #sign-off {
-    padding-bottom: .5rem;
+    padding: .5rem;
+    width: 100vw;
+    background-color: #504e4e;
+    text-align: center;
+    margin-bottom: 0;
 }
 
 /* Media Queries */

@@ -32,6 +32,20 @@ rel="stylesheet">
                 <li class="menu-items"><a href="#contact">contact</a></li>
             </ul>
         </nav>
+            <span id="basket-icon"><ion-icon name="basket"></ion-icon></span><span id="counter">2</span>
+            <div id="basket-tab" class="hidden">
+                <div id="basket-content">
+                    <h3>Selected Items</h3>
+                    <div id="selected-items">
+                        <p><span id="productName"></span><span id="quantity"><span id="price"></span></span></p>
+                    </div>
+                    <p id="total">Total: $0.00</p>
+                    <div class="basket-btn">
+                        <button type="button" id="checkout">Checkout</button>
+                        <button type="button" id="clear" onclick="clearBasket()">Clear basket</button>
+                    </div>
+                </div>
+            </div>
     </header>
     
     <!-- header section ends -->
@@ -79,7 +93,8 @@ rel="stylesheet">
                             <span>Customer Satisfaction:</span>
                             "We are committed to delivering the highest quality..."
                             <span>
-                                <button type="button" class="readmore-btn" data-modal="modal-custSati">read more<ion-icon name="chevron-forward"></ion-icon></button>
+                                <button type="button" class="readmore-btn" data-modal="modal-custSati">
+                                    read more<ion-icon name="chevron-forward"></ion-icon></button>
                             </span>
                         </p>
                         <div id="modal-custSati" class="modal">
@@ -135,64 +150,70 @@ rel="stylesheet">
         <section id="packages">
             <h1 id="packages-header">Explore Our Packages</h1>
             <div id="packages-content">
-                <div class="package" id="stir-fry">
+                <div class="package" id="sff">
                     <h3>Stir Fry Fiesta</h3>
                     <img src="https://th.bing.com/th/id/OIP.0mc-CkSlX4DQ39OwqlBhcQHaHa?w=500&h=500&rs=1&pid=ImgDetMain" 
                     alt="stir fry veggies">
                     <p>
                         Includes a variety of veggies perfect for stir-frying, such as bell peppers, broccoli, carrots, and snap peas.
                     </p>
-                    <button type="button" class="add-btn">add to basket</button>
+                    <button type="button" class="add-btn" id="addSFF" onclick="addItemToList()" data-product-name="Stir Fry Fiesta" data-product-price="R120">
+                        add to basket</button>
                 </div>
                 
-                <div class="package" id="seasonal">
+                <div class="package" id="sss">
                     <h3>Seasonal Splendor Selection</h3>
                     <img src="https://health.chosun.com/site/data/img_dir/2023/06/20/2023062002079_0.jpg" 
                     alt="seasonal fruits and veggies">
                     <p>
                         Features a rotating selection of seasonal fruits and veggies sourced fresh from local farms.
                     </p>
-                    <button type="button" class="add-btn">add to basket</button>
+                    <button type="button" class="add-btn" id="addSSS" onclick="addItemToList()" data-product-name="Seasonal Splendor Selection" data-product-price="R200"> 
+                        add to basket</button>
                 </div>
                 
-                <div class="package" id="stew">
+                <div class="package" id="sbb">
                     <h3>Stew Brew Basket</h3>
                     <img src="https://www.vegkitchen.com/wp-content/uploads/2022/06/sweet-potato-lentil-soup-9-of-9-500x500.jpg" 
                     alt="stew veggies">
                     <p>
                         Contains root vegetables like potatoes, carrots, onions, and hearty greens ideal for stewing.
                     </p>
-                    <button type="button" class="add-btn">add to basket</button>
+                    <button type="button" class="add-btn" id="adSBB" onclick="addItemToList()" data-product-name="Stew Brew Basket" data-product-price="R120"> 
+                        add to basket</button>
                 </div>
                 
-                <div class="package" id="leafy">
+                <div class="package" id="lgt">
                     <h3>Leafy Green Team</h3>
                     <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1mph5v.img?w=600&h=400&m=4&q=55" 
                     alt="leafy veggies">
                     <p>
                         Offers a mix of leafy greens like spinach, kale, lettuce, and Swiss chard for salads or sautéing.
                     </p>
-                    <button type="button" class="add-btn">add to basket</button>
+                    <button type="button" class="add-btn" id="addLGT" onclick="addItemToList()" data-product-name="Leafy Green Team" data-product-price="R100">
+                        add to basket</button>
                 </div>
                 
-                <div class="package" id="medley">
+                <div class="package" id="fbt">
                     <h3>Fresh Blend Trend</h3>
                     <img src="https://media.istockphoto.com/photos/glasses-with-fresh-organic-vegetable-and-fruit-juices-picture-id1202072753?b=1&k=20&m=1202072753&s=170667a&w=0&h=XeZeHhe6fpm3C3SJDWYdn_bibom7Q3vJY3I59Quarns=" 
                     alt="fruits and veggies">
                     <p>
                         Combines a variety of fruits and veggies suitable for snacking, salads, or blending into smoothies.
                     </p>
-                    <button type="button" class="add-btn">add to basket</button>
+                    <button type="button" class="add-btn" id="addFBT" onclick="addItemToList()" data-product-name="Fresh Blend Trend" data-product-price="R150">
+                        add to basket</button>
                 </div>
                 
-                <div class="package" id="grill">
+                <div class="package" id="gtb">
                     <h3>Grill Thrill Bundle</h3>
                     <img src="https://www.mashed.com/img/gallery/mistakes-people-make-when-grilling-vegetables/intro-1618854824.jpg" 
                     alt="braaiand grill veggies">
                     <p>
                         Curates veggies that are perfect for grilling, such as zucchini, eggplant, mushrooms, and bell peppers.
                     </p>
-                    <button type="button" class="add-btn">add to basket</button>
+                    <button type="button" class="add-btn" id="addGTB" onclick="addItemToList()" data-product-name="Grill Thrill Bundle" data-product-price="R100">
+                        add to basket</button>
                 </div>
             </div>
         </section>
@@ -229,7 +250,7 @@ rel="stylesheet">
             <p>"Fresh food, like fresh air, is fundamental to good health. In its simplicity lies its power to heal and rejuvenate."</p>
         </div>
         <div class="details">
-                <p><ion-icon name="mail"></ion-icon> veggiestack@tishbitedigital.com</p>
+            <p><ion-icon name="mail"></ion-icon> info@veggiestack.tishbitedigital.co.za</p>
                 <p><ion-icon name="call"></ion-icon>/<ion-icon name="logo-whatsapp"></ion-icon> +27813872713</p>
         </div>
         <div id="sign-off">

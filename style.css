@@ -50,6 +50,7 @@ header {
     display: flex;
     position: fixed;
     top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -129,6 +130,60 @@ nav {
 
 #toggler .highlight {
     border: 3px solid crimson;
+}
+
+/* basket specific styles */
+#basket-tab {
+    padding: 10px;
+    position: fixed;
+    right: 10px;
+    top: 12%;
+    z-index: 5;
+    width: 40%;
+    height: 80vh;
+    background: rgb(141, 57, 26);
+    color: aliceblue;
+    border-radius: 10px;
+}
+
+#basket-content {
+    overflow-y: auto;
+    height: 100%;
+    width: auto;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+
+#checkout {
+    height: 2rem;
+    width: 6rem;
+    position: relative;
+    bottom: -20px;
+    right: -15px;
+    background: #45a049;
+    color: aliceblue;
+    border-radius: 8px;
+    transition: all .3s ease-in-out;
+}
+
+#checkout:hover {
+    background: darkgreen;
+}
+
+.hidden {
+    display: none;
+}
+
+#basket-icon {
+    font-size: x-large;
+    color: darkgreen;
+}
+
+#counter {
+    color: red;
 }
 
 /* home page specific */
@@ -254,6 +309,7 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 #about-header {
@@ -282,7 +338,7 @@ article p {
 
 .value-icon {
     font-size: x-large;
-    color: purple;
+    color: darkgoldenrod;
 }
 
 .readmore-btn {
@@ -367,8 +423,8 @@ article p {
     gap: 1rem;
     width: 100%;
     height: auto;
-    border-radius: .5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: all .3s ease-in-out;
 }
 
@@ -444,6 +500,7 @@ article p {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #contact-form {
@@ -513,6 +570,11 @@ footer {
     background-color: #504e4e;
     text-align: center;
     margin-bottom: 0;
+}
+
+#email-link {
+    text-decoration: none;
+    color: #fff;
 }
 
 /* Media Queries */

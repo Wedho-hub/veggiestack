@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
 // Select all elements with class .add-btn
 const addButtons = document.querySelectorAll('.add-btn');
 const counters = document.getElementById('counter');
@@ -127,6 +126,11 @@ const addItemToList = (itemName, itemPrice) => {
         productCounts[itemName]++;
     } else {
         productCounts[itemName] = 1;
+
+        // Create list item if it's a new product
+        const listItem = document.createElement("p");
+        listItem.textContent = `${itemName} - $${itemPrice.toFixed(2)} x ${productCounts[itemName]} = $${(itemPrice * productCounts[itemName]).toFixed(2)}`;
+        document.getElementById("selected-items").appendChild(listItem);
     }
 
     // Update the total quantity in the counter
@@ -136,10 +140,11 @@ const addItemToList = (itemName, itemPrice) => {
     });
     counters.textContent = totalQuantity;
 
-    // Create list item
-    const listItem = document.createElement("p");
-    listItem.textContent = `${itemName} - $${itemPrice.toFixed(2)} x ${productCounts[itemName]} = $${(itemPrice * productCounts[itemName]).toFixed(2)}`;
-    document.getElementById("selected-items").appendChild(listItem);
+    // Update the quantity display for the specific item
+    const quantityDisplay = document.getElementById(`${itemName}-quantity`);
+    if (quantityDisplay) {
+        quantityDisplay.textContent = ` x ${productCounts[itemName]}`;
+    }
 };
 
 // Event listener for each add button

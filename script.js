@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
             navbar.style.display = "none";
             toggler.style.border = "none";
         }
-    }
+    };
 
     // Add click event listener to the toggler button
     toggler.addEventListener("click", toggleNavbar);
@@ -70,54 +70,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// basket functionalities
-document.addEventListener("DOMContentLoaded", function() {
-    const basketIcon = document.getElementById("basket-icon");
-    const basketTab = document.getElementById("basket-tab");
-    const checkoutButton = document.getElementById("checkout");
-    const selectedItemsList = document.getElementById("selected-items");
-    const totalElement = document.getElementById("total");
-    let total = 0;
-
-    // Function to add an item to the selected items list
-    const addItemToList = (itemName, itemPrice, quantity) => {
-      const itemTotal = itemPrice * quantity;
-        total += itemTotal;
-
-      // Create list item
-    const listItem = document.createElement("p");
-        listItem.innerHTML = `${itemName} - $${itemPrice.toFixed(2)} x ${quantity} = $${itemTotal.toFixed(2)}`;
-        selectedItemsList.appendChild(listItem);
-
-      // Update total
-        totalElement.textContent = `Total: $${total.toFixed(2)}`;
-    };
-
-    // Example: Adding an item to the list (you can replace this with actual functionality)
-    addItemToList("Tomato", 2.50, 2);
-
-    // Example: Adding another item to the list
-    addItemToList("Carrot", 1.50, 3);
-
-    // Event listener for basket icon click
-    basketIcon.addEventListener("click", () => {
-      // Toggle visibility of basket tab
-        basketTab.classList.toggle("hidden");
-    });
-
-    // Event listener for checkout button
-    checkoutButton.addEventListener("click", () => {
-      // Implement checkout logic here
-        alert("Checkout clicked!");
-    });
-});
-
-// Select all elements with class .add-btn
-const addButtons = document.querySelectorAll('.add-btn');
-const counters = document.getElementById('counter');
-
 // Initialize an object to hold counts for each product
-const productCounts = {};
+let productCounts = {};
 
 // Function to add an item to the selected items list
 const addItemToList = (itemName, itemPrice) => {
@@ -129,7 +83,7 @@ const addItemToList = (itemName, itemPrice) => {
 
         // Create list item if it's a new product
         const listItem = document.createElement("p");
-        listItem.textContent = `${itemName} - $${itemPrice.toFixed(2)} x ${productCounts[itemName]} = $${(itemPrice * productCounts[itemName]).toFixed(2)}`;
+        listItem.textContent = `${itemName} - $${itemPrice.toFixed(1)} x ${productCounts[itemName]} = $${(itemPrice * productCounts[itemName]).toFixed(1)}`;
         document.getElementById("selected-items").appendChild(listItem);
     }
 
@@ -138,7 +92,7 @@ const addItemToList = (itemName, itemPrice) => {
     Object.values(productCounts).forEach(quantity => {
         totalQuantity += quantity;
     });
-    counters.textContent = totalQuantity;
+    counter.textContent = totalQuantity;
 
     // Update the quantity display for the specific item
     const quantityDisplay = document.getElementById(`${itemName}-quantity`);
@@ -146,6 +100,10 @@ const addItemToList = (itemName, itemPrice) => {
         quantityDisplay.textContent = ` x ${productCounts[itemName]}`;
     }
 };
+
+// Select all elements with class .add-btn
+const addButtons = document.querySelectorAll('.add-btn');
+const counter = document.getElementById('counter');
 
 // Event listener for each add button
 addButtons.forEach(button => {
@@ -159,3 +117,41 @@ addButtons.forEach(button => {
     });
 });
 
+// Event listener for basket icon click
+const basketIcon = document.getElementById("basket-icon");
+const basketTab = document.getElementById("basket-tab");
+basketIcon.addEventListener("click", () => {
+    // Toggle visibility of basket tab
+    basketTab.classList.toggle("hidden");
+});
+
+// Event listener for checkout button
+const checkoutButton = document.getElementById("checkout");
+checkoutButton.addEventListener("click", () => {
+    // Implement checkout logic here
+    alert("Checkout clicked!");
+});
+
+// Clear basket function
+function clearBasket() {
+    // Clear the product counts
+    productCounts = {};
+
+    // Clear the selected items list
+    document.getElementById("selected-items").innerHTML = '';
+
+    // Reset the total quantity in the counter
+    counter.textContent = '0';
+}
+
+// Define the temporaryMessage function
+const temporaryMessage = () => {
+    alert("🛠️ ...site still being developed for your best experience... 🛠️");
+}
+
+// Add an event listener to the submit button
+const submitButton = document.getElementById("submit-button"); // Replace "submit-button" with the actual ID of your submit button
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    temporaryMessage(); // Call the temporaryMessage function
+});

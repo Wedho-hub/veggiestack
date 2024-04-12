@@ -146,12 +146,35 @@ function clearBasket() {
 
 // Define the temporaryMessage function
 const temporaryMessage = () => {
-    alert("🛠️ ...site still being developed for your best experience... 🛠️");
+    alert("🛠️ ...Apologies user, the site is still being developed for your best experience... 🛠️");
 }
 
 // Add an event listener to the submit button
-const submitButton = document.getElementById("submit-button"); // Replace "submit-button" with the actual ID of your submit button
+const submitButton = document.getElementById("submit-btn");
 submitButton.addEventListener("click", (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     temporaryMessage(); // Call the temporaryMessage function
+});
+
+
+// Function to open social media links
+const openSocialMedia = (url) => {
+    window.open(url);
+};
+
+// Add event listeners to buttons
+document.getElementById('order-now').addEventListener('click', () => {
+    openSocialMedia('https://wa.link/q6yxzj');
+});
+
+document.getElementById('facebookBtn').addEventListener('click', () => {
+    openSocialMedia('https://web.facebook.com/profile.php?id=61558182126742');
+});
+
+document.getElementById('instagramBtn').addEventListener('click', () => {
+    openSocialMedia('https://www.instagram.com/veggie_stack?fbclid=IwAR2FBj5wr0N-_TnAQT_dsQ1efZsyD3FpV5n64rjQYATUvq_lEGr558WdfT0_aem_AajGo7wLJ-_Oztrty1otmLyfvoe2oXUrWyQW8XNpPW5u1MY29oevrXC_05LKIJ3EDgWJtFRbGVPYzw8He3wjKYEz');
+});
+
+document.getElementById('linkedinBtn').addEventListener('click', () => {
+    alert("🛠️ ...Apologies user, the site is still being developed for your best experience... 🛠️");
 });

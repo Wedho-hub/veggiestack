@@ -59,16 +59,16 @@ rel="stylesheet">
                     <h1>Where is the nearest fruit & vegetable market?</h1>
                     <p>Veggie Stack is the farm and the market brought to your doorstep. We are just a click away.</p>
                 </div>
-                <button type="button" class="sliding-bg" title="order-now" id="order-now" onclick=""> &nbsp;order now&nbsp; </button>
+                <button type="button" class="sliding-bg" title="order-now" id="order-now" onclick="openSocialMedia()"> &nbsp;order now&nbsp; </button>
             </div>
             <div id="home-image">
                 <img src="https://static.cosaporto.it/media/2020/03/vegfruit-basket.jpg" 
                 alt="basket with fruit and veg">
             </div>
             <div id="home-social">
-                <a href="#" title="instagram"><ion-icon name="logo-instagram" class="social-icon"></ion-icon></a>
-                <a href="#" title="facebook"><ion-icon name="logo-facebook" class="social-icon"></ion-icon></a>
-                <a href="#" title="linkedin"><ion-icon name="logo-linkedin" class="social-icon"></ion-icon></a>
+                <button id="instagramBtn" type="button" title="instagram" onclick="openSocialMedia()"><ion-icon name="logo-instagram" class="social-icon" title="instagram"></ion-icon></button>
+                <button id="facebookBtn" type="button" title="facebook" onclick="openSocialMedia()"><ion-icon name="logo-facebook" class="social-icon" title="facebook"></ion-icon></button>
+                <button id="linkedinBtn" type="button" title="linkedin" onclick="openSocialMedia()"><ion-icon name="logo-linkedin" class="social-icon" title="linkedin"></ion-icon></button>
             </div>
         </section>
         <!-- home section ends -->
@@ -254,7 +254,7 @@ rel="stylesheet">
                 <p><ion-icon name="call"></ion-icon>/<ion-icon name="logo-whatsapp"></ion-icon> +27813872713</p>
         </div>
         <div id="sign-off">
-            <em>&copy; Veggie Stack 2024 | Developed by Tishbite Digital</em>
+            <em>&copy; Veggie Stack 2024 - All rights reserved | Developed by Tishbite Digital</em>
         </div>
     </footer>
     <!-- footer section ends -->

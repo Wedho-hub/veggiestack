@@ -260,8 +260,9 @@ nav {
     text-align: center;
 }
 
-#home-social a {
+#home-social button {
     margin: .5rem 1rem;
+    border: none;padding: none;
 }
 
 .social-icon {

@@ -37,17 +37,16 @@ rel="stylesheet">
                 <div id="basket-content">
                     <h3>🚧APOLOGIES, BASKET TAB STILL BEING DEVELOPED🏗️</h3>
                     <div id="selected-items">
-                        <p><span id="productName"></span><span id="quantity"></span><span id="price"></span></p>
+                        <ul></ul>
                     </div>
-                    <p id="total">Total: $0.00🛠️</p>
+                    <p id="total">🛠️Total: 🛠️$0.00</p>
                     <div class="basket-btn">
                         <button type="button" id="checkout">Checkout</button>
                         <button type="button" id="clear" onclick="clearBasket()">Clear basket</button>
                     </div>
                 </div>
             </div>
-    </header>
-    
+        </header> 
     <!-- header section ends -->
     
     <!-- main section starts -->
@@ -59,7 +58,9 @@ rel="stylesheet">
                     <h1>Where is the nearest fruit & vegetable market?</h1>
                     <p>Veggie Stack is the farm and the market brought to your doorstep. We are just a click away.</p>
                 </div>
-                <button type="button" class="sliding-bg" title="order-now" id="order-now" onclick="openSocialMedia()"> &nbsp;order now&nbsp; </button>
+                <a href="https://wa.me/27813872713" id="homeBtn">
+                    <button type="button" id="order-now" class="sliding-bg">order now</button>
+                </a>
             </div>
             <div id="home-image">
                 <img src="https://static.cosaporto.it/media/2020/03/vegfruit-basket.jpg" 
@@ -157,7 +158,7 @@ rel="stylesheet">
                     <p>
                         Includes a variety of veggies perfect for stir-frying, such as bell peppers, broccoli, carrots, and snap peas.
                     </p>
-                    <button type="button" class="add-btn" id="addSFF" onclick="addItemToList()" data-product-name="Stir Fry Fiesta" data-product-price="R120">
+                    <button type="button" class="add-btn" id="addSFF" onclick="addItemToList()" data-product-name="Stir Fry Fiesta" data-product-price="120">
                         add to basket</button>
                 </div>
                 
@@ -216,6 +217,7 @@ rel="stylesheet">
                         add to basket</button>
                 </div>
             </div>
+            <p id="suggestion">You can also suggest new combos when you order. Create your own package acording to your preferences!</p>
         </section>
         <!-- packages section ends -->
         
@@ -239,6 +241,14 @@ rel="stylesheet">
         <!-- contact section ends -->
     </main>
     <!-- main section ends -->
+    
+    <!-- temporary message start -->
+    <div id="temp-message" class="hidden">
+        <h2>🛠️...feature coming soon...🛠️</h2>
+        <p>tishbite digital sincerely apologizes for the glitch. We are currently working on this feature</p>
+        <button class="apology-button" type="button" onclick="hideApology()">close</button>
+    </div>
+    <!-- temporary message end -->
     
     <!-- footer section starts -->
     <footer>

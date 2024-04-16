@@ -1,17 +1,25 @@
-// Smooth scroll to anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
 document.addEventListener("DOMContentLoaded", function() {
     const toggler = document.getElementById("toggler");
     const navbar = document.getElementById("navbar");
+    const modalButtons = document.querySelectorAll('.readmore-btn');
+    const modals = document.querySelectorAll('.modal');
+    const tempMessage = document.getElementById("temp-message");
+    const basketIcon = document.getElementById("basket-icon");
+    const basketTab = document.getElementById("basket-tab");
+    const checkoutButton = document.getElementById("checkout");
+    const submitButton = document.getElementById("submit-btn");
+    const closeTempBtn = document.querySelector(".apology-button");
+    const clearBtn = document.getElementById("clear");
+
+    // Smooth scroll to anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 
     // Initialize navbar state
     if (window.innerWidth <= 768) {
@@ -42,12 +50,8 @@ document.addEventListener("DOMContentLoaded", function() {
             toggler.style.border = "none";
         });
     });
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-    const modalButtons = document.querySelectorAll('.readmore-btn');
-    const modals = document.querySelectorAll('.modal');
-
+    // Show modal on button click
     modalButtons.forEach(button => {
         button.addEventListener('click', () => {
             const modalId = button.getAttribute('data-modal');
@@ -56,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    // Close modal on close button click or outside click
     modals.forEach(modal => {
         const closeButton = modal.querySelector('.close');
         closeButton.addEventListener('click', () => {
@@ -68,10 +73,67 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
-});
 
-// Initialize an object to hold counts for each product
-let productCounts = {};
+    // Toggle visibility of basket tab on basket icon click
+    basketIcon.addEventListener("click", () => {
+        basketTab.classList.toggle("hidden");
+    });
+
+    // Checkout button event listener
+    checkoutButton.addEventListener("click", () => {
+        // Implement checkout logic here
+        tempMessage.classList.remove("hidden");
+        basketTab.classList.add("hidden");
+    });
+
+    // Temporary message function
+    const temporaryMessage = () => {
+        tempMessage.classList.remove("hidden");
+    };
+
+    // Close temporary message function
+    const hideApology = () => {
+        tempMessage.classList.add("hidden");
+    };
+
+    // add event listener to the closeTempBtn
+    closeTempBtn.addEventListener("click", hideApology);
+
+    // Add event listener to the submit button
+    submitButton.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the default form submission behavior
+        temporaryMessage(); // Call the temporaryMessage function
+    });
+
+    // Event listener for social media buttons
+    document.getElementById('order-now').addEventListener('click', () => {
+        openSocialMedia('https://wa.link/q6yxzj');
+    });
+    
+    document.getElementById('facebookBtn').addEventListener('click', () => {
+        openSocialMedia('https://web.facebook.com/profile.php?id=61558182126742');
+    });
+    
+    document.getElementById('instagramBtn').addEventListener('click', () => {
+        openSocialMedia('https://www.instagram.com/veggie_stack?fbclid=IwAR2FBj5wr0N-_TnAQT_dsQ1efZsyD3FpV5n64rjQYATUvq_lEGr558WdfT0_aem_AajGo7wLJ-_Oztrty1otmLyfvoe2oXUrWyQW8XNpPW5u1MY29oevrXC_05LKIJ3EDgWJtFRbGVPYzw8He3wjKYEz');
+    });
+    
+    document.getElementById('linkedinBtn').addEventListener('click', () => {
+        openLinkedIn();
+    });
+    
+    // Function to open social media links
+    const openSocialMedia = (url) => {
+        // Open the URL in a new blank window
+        window.open(url, '_blank');
+    };
+    
+    const openLinkedIn = () => {
+        alert("🛠️ ...Apologies user, the site is still being developed for your best experience... 🛠️");
+    };
+
+    // Initialize an object to hold counts for each product
+    let productCounts = {};
 
 // Function to add an item to the selected items list
 const addItemToList = (itemName, itemPrice) => {
@@ -82,12 +144,29 @@ const addItemToList = (itemName, itemPrice) => {
         productCounts[itemName] = 1;
 
         // Create list item if it's a new product
-        const listItem = document.createElement("p");
-        listItem.textContent = `${itemName} - $${itemPrice.toFixed(1)} x ${productCounts[itemName]} = $${(itemPrice * productCounts[itemName]).toFixed(1)}`;
+        const listItem = document.createElement("div");
+        listItem.classList.add("item");
+
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = itemName;
+        nameSpan.classList.add("name");
+        listItem.appendChild(nameSpan);
+
+        const quantitySpan = document.createElement("span");
+        quantitySpan.textContent = ` x ${productCounts[itemName]}`;
+        quantitySpan.classList.add("quantity");
+        listItem.appendChild(quantitySpan);
+
+        const priceSpan = document.createElement("span");
+        priceSpan.textContent = `R${itemPrice.toFixed(2)}`;
+        priceSpan.classList.add("price");
+        listItem.appendChild(priceSpan);
+
         document.getElementById("selected-items").appendChild(listItem);
     }
 
     // Update the total quantity in the counter
+    const counter = document.getElementById('counter');
     let totalQuantity = 0;
     Object.values(productCounts).forEach(quantity => {
         totalQuantity += quantity;
@@ -95,86 +174,40 @@ const addItemToList = (itemName, itemPrice) => {
     counter.textContent = totalQuantity;
 
     // Update the quantity display for the specific item
-    const quantityDisplay = document.getElementById(`${itemName}-quantity`);
+    const quantityDisplay = document.querySelector(`#selected-items .item[data-name="${itemName}"] .quantity`);
     if (quantityDisplay) {
         quantityDisplay.textContent = ` x ${productCounts[itemName]}`;
     }
 };
 
-// Select all elements with class .add-btn
-const addButtons = document.querySelectorAll('.add-btn');
-const counter = document.getElementById('counter');
 
-// Event listener for each add button
-addButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Get product details from the button's data attributes
-        const productName = button.getAttribute('data-product-name');
-        const productPrice = parseFloat(button.getAttribute('data-product-price'));
 
-        // Add the item to the list
-        addItemToList(productName, productPrice);
+    // Select all elements with class .add-btn
+    const addButtons = document.querySelectorAll('.add-btn');
+
+    // Event listener for each add button
+    addButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Get product details from the button's data attributes
+            const productName = button.getAttribute('data-product-name');
+            const productPrice = parseFloat(button.getAttribute('data-product-price'));
+
+            // Add the item to the list
+            addItemToList(productName, productPrice);
+        });
     });
-});
 
-// Event listener for basket icon click
-const basketIcon = document.getElementById("basket-icon");
-const basketTab = document.getElementById("basket-tab");
-basketIcon.addEventListener("click", () => {
-    // Toggle visibility of basket tab
-    basketTab.classList.toggle("hidden");
-});
+    // Clear basket function
+    const clearBasket = () => {
+        // Clear the product counts
+        productCounts = {};
 
-// Event listener for checkout button
-const checkoutButton = document.getElementById("checkout");
-checkoutButton.addEventListener("click", () => {
-    // Implement checkout logic here
-    alert("Checkout clicked!");
-});
+        // Clear the selected items list
+        document.getElementById("selected-items").innerHTML = '';
 
-// Clear basket function
-function clearBasket() {
-    // Clear the product counts
-    productCounts = {};
+        // Reset the total quantity in the counter
+        counter.textContent = '0';
+    };
 
-    // Clear the selected items list
-    document.getElementById("selected-items").innerHTML = '';
-
-    // Reset the total quantity in the counter
-    counter.textContent = '0';
-}
-
-// Define the temporaryMessage function
-const temporaryMessage = () => {
-    alert("🛠️ ...Apologies user, the site is still being developed for your best experience... 🛠️");
-}
-
-// Add an event listener to the submit button
-const submitButton = document.getElementById("submit-btn");
-submitButton.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
-    temporaryMessage(); // Call the temporaryMessage function
-});
-
-
-// Function to open social media links
-const openSocialMedia = (url) => {
-    window.open(url);
-};
-
-// Add event listeners to buttons
-document.getElementById('order-now').addEventListener('click', () => {
-    openSocialMedia('https://wa.link/q6yxzj');
-});
-
-document.getElementById('facebookBtn').addEventListener('click', () => {
-    openSocialMedia('https://web.facebook.com/profile.php?id=61558182126742');
-});
-
-document.getElementById('instagramBtn').addEventListener('click', () => {
-    openSocialMedia('https://www.instagram.com/veggie_stack?fbclid=IwAR2FBj5wr0N-_TnAQT_dsQ1efZsyD3FpV5n64rjQYATUvq_lEGr558WdfT0_aem_AajGo7wLJ-_Oztrty1otmLyfvoe2oXUrWyQW8XNpPW5u1MY29oevrXC_05LKIJ3EDgWJtFRbGVPYzw8He3wjKYEz');
-});
-
-document.getElementById('linkedinBtn').addEventListener('click', () => {
-    alert("🛠️ ...Apologies user, the site is still being developed for your best experience... 🛠️");
+    clearBtn.addEventListener("click", clearBasket);
 });

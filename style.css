@@ -10,7 +10,7 @@ body {
 }
 
 hr {
-    margin-top: 2px;
+    height: 2px;
     color: black;
 }
 
@@ -38,6 +38,43 @@ section {
 
 .sliding-bg:hover::before {
     left: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+#temp-message {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    right: auto;
+}
+
+#temp-message h2 {
+    color: #333;
+}
+
+#temp-message p {
+    color: #666;
+    margin-bottom: 20px;
+}
+.apology-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.apology-button:hover {
+    background-color: #0056b3;
 }
 
 /* header specific styles */
@@ -189,10 +226,6 @@ nav {
     background: darkgreen;
 }
 
-.hidden {
-    display: none;
-}
-
 #basket-icon {
     font-size: x-large;
     color: darkgreen;
@@ -258,11 +291,17 @@ nav {
     grid-row-start: 2;
     grid-row-end: 3;
     text-align: center;
+    padding: 2rem .5rem;
+    margin: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #home-social button {
     margin: .5rem 1rem;
-    border: none;padding: none;
+    border: none; padding: none;
+    background-color: #fff;
 }
 
 .social-icon {
@@ -289,7 +328,8 @@ nav {
 
 /* about specific styles */
 #about {
-    padding: 3rem;
+    padding: 2rem;
+    margin: 2rem auto;
     width: 100%;
     height: 100%;
     background: darkseagreen;
@@ -318,8 +358,8 @@ nav {
     grid-row-start: 1;
     grid-row-end: 2;
     padding: 1rem;
-    width: 100%;
-    height: 100%;
+    width: 105%;
+    height: 105%;
 }
 
 #about-image img {
@@ -431,7 +471,7 @@ article p {
 }
 
 .package {
-    background: #e3e3e3;
+    background: darkseagreen;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -491,6 +531,16 @@ article p {
 
 .add-btn:hover {
     color: rgb(251, 61, 61);
+}
+
+#suggestion {
+    padding: 1rem;
+    margin-top: 1rem;
+    color: darkgreen;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
 }
 
 /* contact section specific style */
@@ -571,6 +621,7 @@ footer {
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     font-size: 1.1rem;
+    color: #fff;
 }
 
 .details p {
@@ -596,6 +647,10 @@ footer {
 
 /* Media Queries */
 @media only screen and (max-width: 768px) {
+    #temp-message {
+        left: -50%;
+    }
+    
     /* header specific queries */
     header {
         padding: 0.5rem;
@@ -607,9 +662,8 @@ footer {
     }
 
     #toggler {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+        display: inline-block;
+        margin: 0 1rem;
         border-radius: 8px;
     }
 
@@ -651,6 +705,27 @@ footer {
         color: coral;
         font-weight: 500;
         font-size: 1.5rem;
+    }
+
+    #basket-tab {
+        width: 80%;
+    }
+
+    #basket-icon {
+        margin-right: .3rem;
+    }
+
+    #counter {
+        margin: 0 .5rem 0 0;
+    }
+
+    #checkout {
+        float: left;
+        margin: 1rem;
+    }
+
+    #clear {
+        margin: 1rem;
     }
 
     /* home specisfic qeries */

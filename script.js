@@ -10,16 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const submitButton = document.getElementById("submit-btn");
     const closeTempBtn = document.querySelector(".apology-button");
     const clearBtn = document.getElementById("clear");
-
-    // Smooth scroll to anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
+    const totalDueSpan = document.getElementById('total-due'); // New variable to get the total due element
+    const counter = document.getElementById('counter'); // New variable to get the counter element
 
     // Initialize navbar state
     if (window.innerWidth <= 768) {
@@ -109,25 +101,25 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('order-now').addEventListener('click', () => {
         openSocialMedia('https://wa.link/q6yxzj');
     });
-    
+
     document.getElementById('facebookBtn').addEventListener('click', () => {
         openSocialMedia('https://web.facebook.com/profile.php?id=61558182126742');
     });
-    
+
     document.getElementById('instagramBtn').addEventListener('click', () => {
         openSocialMedia('https://www.instagram.com/veggie_stack?fbclid=IwAR2FBj5wr0N-_TnAQT_dsQ1efZsyD3FpV5n64rjQYATUvq_lEGr558WdfT0_aem_AajGo7wLJ-_Oztrty1otmLyfvoe2oXUrWyQW8XNpPW5u1MY29oevrXC_05LKIJ3EDgWJtFRbGVPYzw8He3wjKYEz');
     });
-    
+
     document.getElementById('linkedinBtn').addEventListener('click', () => {
         openLinkedIn();
     });
-    
+
     // Function to open social media links
     const openSocialMedia = (url) => {
         // Open the URL in a new blank window
         window.open(url, '_blank');
     };
-    
+
     const openLinkedIn = () => {
         alert("🛠️ ...Apologies user, the site is still being developed for your best experience... 🛠️");
     };
@@ -135,52 +127,56 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize an object to hold counts for each product
     let productCounts = {};
 
-// Function to add an item to the selected items list
-const addItemToList = (itemName, itemPrice) => {
-    // Check if the product already exists in the list
-    if (productCounts[itemName]) {
-        productCounts[itemName]++;
-    } else {
-        productCounts[itemName] = 1;
+    // Function to add an item to the selected items list
+    const addItemToList = (itemName, itemPrice) => {
+        // Check if the product already exists in the list
+        if (productCounts[itemName]) {
+            productCounts[itemName]++;
+        } else {
+            productCounts[itemName] = 1;
 
-        // Create list item if it's a new product
-        const listItem = document.createElement("div");
-        listItem.classList.add("item");
+            // Create list item if it's a new product
+            const listItem = document.createElement("div");
+            listItem.classList.add("item");
 
-        const nameSpan = document.createElement("span");
-        nameSpan.textContent = itemName;
-        nameSpan.classList.add("name");
-        listItem.appendChild(nameSpan);
+            const nameSpan = document.createElement("span");
+            nameSpan.textContent = itemName;
+            nameSpan.classList.add("name");
+            listItem.appendChild(nameSpan);
 
-        const quantitySpan = document.createElement("span");
-        quantitySpan.textContent = ` x ${productCounts[itemName]}`;
-        quantitySpan.classList.add("quantity");
-        listItem.appendChild(quantitySpan);
+            const quantitySpan = document.createElement("span");
+            quantitySpan.textContent = ` x ${productCounts[itemName]}`;
+            quantitySpan.classList.add("quantity");
+            listItem.appendChild(quantitySpan);
 
-        const priceSpan = document.createElement("span");
-        priceSpan.textContent = `R${itemPrice.toFixed(2)}`;
-        priceSpan.classList.add("price");
-        listItem.appendChild(priceSpan);
+            const priceSpan = document.createElement("span");
+            priceSpan.textContent = `R${itemPrice.toFixed(2)}`;
+            priceSpan.classList.add("price");
+            listItem.appendChild(priceSpan);
 
-        document.getElementById("selected-items").appendChild(listItem);
-    }
+            document.getElementById("selected-items").appendChild(listItem);
+        }
 
-    // Update the total quantity in the counter
-    const counter = document.getElementById('counter');
-    let totalQuantity = 0;
-    Object.values(productCounts).forEach(quantity => {
-        totalQuantity += quantity;
-    });
-    counter.textContent = totalQuantity;
+        // Update the total quantity in the counter
+        let totalQuantity = 0;
+        Object.values(productCounts).forEach(quantity => {
+            totalQuantity += quantity;
+        });
+        counter.textContent = totalQuantity;
 
-    // Update the quantity display for the specific item
-    const quantityDisplay = document.querySelector(`#selected-items .item[data-name="${itemName}"] .quantity`);
-    if (quantityDisplay) {
-        quantityDisplay.textContent = ` x ${productCounts[itemName]}`;
-    }
-};
+        // Update the total amount due
+        updateTotalDue();
+    };
 
-
+    // Function to update the total amount due
+    const updateTotalDue = () => {
+        let totalDue = 0;
+        Object.entries(productCounts).forEach(([itemName, quantity]) => {
+            const itemPrice = parseFloat(document.querySelector(`.item[data-name="${itemName}"] .price`).textContent.substring(1));
+            totalDue += itemPrice * quantity;
+        });
+        totalDueSpan.textContent = `Total Due: R${totalDue.toFixed(2)}`;
+    };
 
     // Select all elements with class .add-btn
     const addButtons = document.querySelectorAll('.add-btn');
@@ -207,6 +203,9 @@ const addItemToList = (itemName, itemPrice) => {
 
         // Reset the total quantity in the counter
         counter.textContent = '0';
+
+        // Reset the total amount due
+        totalDueSpan.textContent = 'Total Due: R0.00';
     };
 
     clearBtn.addEventListener("click", clearBasket);

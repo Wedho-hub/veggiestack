@@ -258,6 +258,57 @@ nav {
     color: green;
 }
 
+/* CSS for basket summary pop-up */
+#order-summary {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: whitesmoke;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+
+#order-summary h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#order-summary pre {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+}
+
+#order-summary button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
 /* home page specific */
 #home {
     margin-top: 3rem;
@@ -331,6 +382,18 @@ nav {
     font-size: xx-large;
     transition: all .3s ease-in-out;
     color: darkgreen;
+}
+
+#instagram {
+    color: #e4405f;
+}
+
+#facebook {
+    color: #3b5998;
+}
+
+#linkedin {
+    color: #0077b5;
 }
 
 .social-icon:hover {
@@ -509,6 +572,10 @@ article p {
 .processIcon {
     color: darkgreen;
     font-size: 2rem;
+}
+
+.highlight {
+    color: darkred;
 }
 
 /* packages specific styles */
@@ -715,7 +782,17 @@ footer {
 /* Media Queries */
 @media only screen and (max-width: 768px) {
     #temp-message {
-        left: -50%;
+        background-color: #fff;
+        width: 95%;
+        padding: 20px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: fixed;
+        top: 20%;
+        left: -10%;
+        right: -10%;
     }
     
     /* header specific queries */

@@ -72,12 +72,43 @@ document.addEventListener("DOMContentLoaded", function() {
         basketTab.classList.toggle("hidden");
     });
 
-    // Checkout button event listener
-    checkoutButton.addEventListener("click", () => {
-        // Implement checkout logic here
-        tempMessage.classList.remove("hidden");
-        basketTab.classList.add("hidden");
+// Function to generate a code summarizing the contents of the basket
+const generateBasketCode = () => {
+    let code = "Basket Summary:\n";
+    const items = document.querySelectorAll('.item');
+    items.forEach(item => {
+        const itemName = item.querySelector('.name').textContent;
+        const quantity = item.querySelector('.quantity').textContent.trim().split(' ')[1];
+        const price = item.querySelector('.price').textContent;
+        code += `${itemName}: ${quantity} x ${price}\n`;
     });
+    return code;
+};
+
+// Function to close the basket summary
+const closeOrderSummary = () => {
+    console.log("Closing basket summary"); // Check if function is being called
+    tempMessage.innerHTML = ''; // Clear the content
+    tempMessage.classList.add("hidden");
+};
+
+// Update the checkout button event listener
+checkoutButton.addEventListener("click", () => {
+    const basketCode = generateBasketCode();
+    tempMessage.innerHTML = `
+        <div id="order-summary">
+            <h2>Order Summary</h2>
+            <pre>${basketCode}</pre>
+            <button id="closeButton">Close</button>
+        </div>
+    `;
+    tempMessage.classList.remove("hidden");
+    basketTab.classList.add("hidden");
+;
+    // Add event listener to the close button
+    document.getElementById("closeButton").addEventListener("click", closeOrderSummary);
+    document.getElementById("closeButton").addEventListener("click", clearBasket);
+})
 
     // Temporary message function
     const temporaryMessage = () => {
@@ -92,11 +123,15 @@ document.addEventListener("DOMContentLoaded", function() {
     // add event listener to the closeTempBtn
     closeTempBtn.addEventListener("click", hideApology);
 
-    // Add event listener to the submit button
-    submitButton.addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent the default form submission behavior
-        temporaryMessage(); // Call the temporaryMessage function
-    });
+// Add event listener to the submit button
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    temporaryMessage(); // Call the temporaryMessage function
+
+    // Optionally, you can submit the form here if needed
+    // For example, if you have a form element with id "contact-form":
+    // document.getElementById("contact-form").submit();
+});
 
     // Event listener for social media buttons
     document.getElementById('order-now').addEventListener('click', () => {

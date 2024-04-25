@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const submitButton = document.getElementById("submit-btn");
     const closeTempBtn = document.querySelector(".apology-button");
     const clearBtn = document.getElementById("clear");
-    const totalDueSpan = document.getElementById('total-due'); // New variable to get the total due element
-    const counter = document.getElementById('counter'); // New variable to get the counter element
+    const totalDueSpan = document.getElementById('total-due');
+    const counter = document.getElementById('counter');
+    const selectedItems = document.getElementById("selected-items");
 
     // Initialize navbar state
     if (window.innerWidth <= 768) {
@@ -127,46 +128,42 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize an object to hold counts for each product
     let productCounts = {};
 
-    // Function to add an item to the selected items list
-    const addItemToList = (itemName, itemPrice) => {
-        // Check if the product already exists in the list
-        if (productCounts[itemName]) {
-            productCounts[itemName]++;
-        } else {
-            productCounts[itemName] = 1;
+// Function to add an item to the selected items list
+const addItemToList = (itemName, itemPrice) => {
+    // Check if the product already exists in the list
+    if (productCounts[itemName]) {
+        // Increment the quantity
+        productCounts[itemName]++;
 
-            // Create list item if it's a new product
-            const listItem = document.createElement("div");
-            listItem.classList.add("item");
+        // Update the quantity span for the existing item
+        const existingItem = document.querySelector(`.item[data-name="${itemName}"]`);
+        const quantitySpan = existingItem.querySelector('.quantity');
+        quantitySpan.textContent = ` x ${productCounts[itemName]}`;
+    } else {
+        // Create list item if it's a new product
+        productCounts[itemName] = 1;
 
-            const nameSpan = document.createElement("span");
-            nameSpan.textContent = itemName;
-            nameSpan.classList.add("name");
-            listItem.appendChild(nameSpan);
+        const listItem = document.createElement("div");
+        listItem.classList.add("item");
+        listItem.setAttribute("data-name", itemName); // Add data attribute for easy access
 
-            const quantitySpan = document.createElement("span");
-            quantitySpan.textContent = ` x ${productCounts[itemName]}`;
-            quantitySpan.classList.add("quantity");
-            listItem.appendChild(quantitySpan);
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = itemName;
+        nameSpan.classList.add("name");
+        listItem.appendChild(nameSpan);
 
-            const priceSpan = document.createElement("span");
-            priceSpan.textContent = `R${itemPrice.toFixed(2)}`;
-            priceSpan.classList.add("price");
-            listItem.appendChild(priceSpan);
+        const quantitySpan = document.createElement("span");
+        quantitySpan.textContent = ` x ${productCounts[itemName]}`;
+        quantitySpan.classList.add("quantity");
+        listItem.appendChild(quantitySpan);
 
-            document.getElementById("selected-items").appendChild(listItem);
-        }
+        const priceSpan = document.createElement("span");
+        priceSpan.textContent = `R${itemPrice.toFixed(2)}`;
+        priceSpan.classList.add("price");
+        listItem.appendChild(priceSpan);
 
-        // Update the total quantity in the counter
-        let totalQuantity = 0;
-        Object.values(productCounts).forEach(quantity => {
-            totalQuantity += quantity;
-        });
-        counter.textContent = totalQuantity;
-
-        // Update the total amount due
-        updateTotalDue();
-    };
+        selectedItems.appendChild(listItem);
+    }
 
     // Function to update the total amount due
     const updateTotalDue = () => {
@@ -177,6 +174,18 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         totalDueSpan.textContent = `Total Due: R${totalDue.toFixed(2)}`;
     };
+
+    // Update the total quantity in the counter
+    let totalQuantity = 0;
+    Object.values(productCounts).forEach(quantity => {
+        totalQuantity += quantity;
+    });
+    counter.textContent = totalQuantity;
+
+    // Update the total amount due
+    updateTotalDue();
+};
+
 
     // Select all elements with class .add-btn
     const addButtons = document.querySelectorAll('.add-btn');
@@ -199,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
         productCounts = {};
 
         // Clear the selected items list
-        document.getElementById("selected-items").innerHTML = '';
+        selectedItems.innerHTML = '';
 
         // Reset the total quantity in the counter
         counter.textContent = '0';

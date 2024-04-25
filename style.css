@@ -9,14 +9,15 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-hr {
-    height: 2px;
-    color: black;
-}
-
 section {
     height: 100%;
     width: 100%;
+}
+
+hr {
+    width: 100%;
+    height: 3px;
+    background: #fff;
 }
 
 .sliding-bg {
@@ -46,14 +47,16 @@ section {
 
 #temp-message {
     background-color: #fff;
+    width: 95%;
     padding: 20px;
+    margin: auto;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     position: fixed;
     top: 20%;
-    left: 10%;
-    right: auto;
+    left: -10%;
+    right: -10%;
 }
 
 #temp-message h2 {
@@ -235,6 +238,26 @@ nav {
     color: red;
 }
 
+.item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.quantity {
+    margin-left: 5px;
+    color: #888;
+}
+
+.price {
+    margin-left: 10px;
+    color: green;
+}
+
 /* home page specific */
 #home {
     margin-top: 3rem;
@@ -329,10 +352,10 @@ nav {
 /* about specific styles */
 #about {
     padding: 2rem;
-    margin: 2rem auto;
+    margin: 2rem auto 0;
     width: 100%;
     height: 100%;
-    background: darkseagreen;
+    background: rgb(182, 206, 182);
     display: flex;
     flex-direction: column;
 }
@@ -359,7 +382,7 @@ nav {
     grid-row-end: 2;
     padding: 1rem;
     width: 105%;
-    height: 105%;
+    height: 100%;
 }
 
 #about-image img {
@@ -444,6 +467,50 @@ article p {
     cursor: pointer;
 }
 
+/* ordering process styles */
+#orderProcess {
+    background: #e3e3e3 center fixed;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    margin: 0;
+}
+
+#orderProcess .content {
+    max-width: 80%;
+    margin: 2rem auto 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#orderProcess hr {
+    width: 50%;
+    height: 3px;
+    color: black;
+    background: crimson;
+}
+
+
+#orderProcess .content p {
+    text-align: center;
+}
+
+#processList {
+    list-style: none;
+    margin: 2rem 0;
+    display: grid;
+    grid-template-rows: repeat(auto);
+    gap: 1rem;
+}
+
+.processIcon {
+    color: darkgreen;
+    font-size: 2rem;
+}
+
 /* packages specific styles */
 #packages {
     display: flex;
@@ -471,7 +538,7 @@ article p {
 }
 
 .package {
-    background: darkseagreen;
+    background: rgb(182, 206, 182);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -771,7 +838,7 @@ footer {
 
     /* packages specific queries */
     #packages {
-        padding: .4rem;
+        padding: .6rem;
     }
 
     #packages-content {

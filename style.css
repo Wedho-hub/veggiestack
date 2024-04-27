@@ -17,7 +17,22 @@ section {
 hr {
     width: 100%;
     height: 3px;
-    background: #fff;
+    background: #0c0c0c;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.2);
 }
 
 .sliding-bg {
@@ -198,17 +213,25 @@ nav {
     align-items: start;
 }
 
+#basket-tab h3 {
+    font-size: 1.7rem;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 /* Checkout Button */
 #checkout {
     position: relative;
     overflow: hidden;
     background: none;
-    color: #fff;
+    color: #333;
     padding: 10px 20px;
     border: 2px solid darkgreen;
     border-radius: 5px;
     font-family: Arial, sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 900;
     cursor: pointer;
 }
@@ -263,12 +286,16 @@ nav {
 }
 
 #basket-icon {
-    font-size: x-large;
+    font-size: 2rem;
     color: darkgreen;
+    margin: 0;
+    padding: 0;
 }
 
 #counter {
     color: red;
+    margin: 0;
+    padding: 0;
 }
 
 .item {
@@ -310,7 +337,7 @@ nav {
 
 #order-summary h2 {
     font-family: 'Arial', sans-serif;
-    font-size: 24px;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
@@ -322,7 +349,7 @@ nav {
 }
 
 #order-summary button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -348,7 +375,7 @@ nav {
     margin-top: 3rem;
     padding: 3rem 8% 2rem;
     font-size: large;
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-rows: 90% 10%;
     grid-template-columns: 50% 50%;
@@ -413,37 +440,42 @@ nav {
 }
 
 .social-icon {
-    font-size: xx-large;
+    font-size: 2rem;
     transition: all .3s ease-in-out;
     color: darkgreen;
 }
 
 #instagram {
     color: #e4405f;
+    transition: all .3s ease-in-out;
+}
+
+#instagram:hover {
+    color: #c93550;
+    transform: scale(1.2);
 }
 
 #facebook {
     color: #3b5998;
 }
 
+#facebook:hover {
+    color: #2a447d;
+    transform: scale(1.2);
+}
+
 #linkedin {
     color: #0077b5;
 }
 
-.social-icon:hover {
-    transform: scale(1.3);
-    color: rgb(183, 78, 40);
+#linkedin:hover {
+    color: #016296;
+    transform: scale(1.2);
 }
 
 #order-now {
-    font-family: "Merriweather", sans-serif;
     border: 2px solid darkgreen;
-    border-radius: 10px;
-    height: 2.5rem;
-    cursor: pointer;
-    width: 7rem;
     margin: 2rem;
-    background: rgba(245, 245, 245, .6);
 }
 
 /* about specific styles */
@@ -586,7 +618,6 @@ article p {
 #orderProcess hr {
     width: 50%;
     height: 3px;
-    color: black;
     background: crimson;
 }
 
@@ -658,6 +689,12 @@ article p {
     margin: 0;
 }
 
+.rands {
+    color: darkgoldenrod;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
 .package:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     background-color: aliceblue;
@@ -671,11 +708,14 @@ article p {
 }
 
 .add-btn {
-    width: 90%;
-    height: 2rem;
+    width: 80%;
+    height: 2.5rem;
     border: 2px solid darkgreen;
     border-radius: 8px;
     font-family: "Merriweather", sans-serif;
+    color: darkgreen;
+    text-align: center;
+    text-transform: capitalize;
     transition: all .3s ease;
     position: relative;
     overflow: hidden;
@@ -758,19 +798,46 @@ article p {
     resize: vertical;
 }
 
-#contact-form button {
-    width: 80%;
-    padding: 1rem 2rem;
-    color: black;
+#submit-btn {
     border: 2px solid darkgreen;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-#contact-form button:hover {
-    background-color: #45a049;
-    color: #fff;
+/* Testimonials section styles */
+#testimonials {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#testimonials-header {
+    margin-bottom: 30px;
+}
+
+.testimonial {
+    max-width: 300px;
+    margin: 0 auto 40px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial img {
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.testimonial p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.testimonial cite {
+    font-style: normal;
+    color: #666;
+    font-size: 14px;
 }
 
 /* footer specific style */
@@ -829,6 +896,27 @@ footer {
         left: -10%;
         right: -10%;
     }
+
+    /* basket specific queries */
+    #basket-tab {
+        width: 80%;
+        top: 12%;
+        height: 80vh;
+    }
+
+    #basket-content {
+        padding: 1rem;
+    }
+
+    #basket-tab h3 {
+        font-size: 1.5rem;
+    }
+
+    #checkout,
+    #clear {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
     
     /* header specific queries */
     header {
@@ -886,25 +974,12 @@ footer {
         font-size: 1.5rem;
     }
 
-    #basket-tab {
-        width: 80%;
-    }
-
     #basket-icon {
-        margin-right: .3rem;
+        margin-left: .3rem;
     }
 
     #counter {
-        margin: 0 .5rem 0 0;
-    }
-
-    #checkout {
-        float: left;
-        margin: 1rem;
-    }
-
-    #clear {
-        margin: 1rem;
+        margin: 0 1rem 1rem 0;
     }
 
     /* home specisfic qeries */
@@ -923,7 +998,10 @@ footer {
     }
 
     #home-social {
+        width: 100%;
+        height: auto;
         padding: 1rem;
+        margin-bottom: .5rem;
     }
     .text-container {
         background: rgba(245, 245, 245, .6);
@@ -941,6 +1019,7 @@ footer {
     /* about specific queries */
     #about {
         padding: .5rem;
+        margin-top: 0;
     }
     
     .row {

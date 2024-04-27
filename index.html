@@ -42,6 +42,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
         <div id="basket-tab" class="hidden">
             <div id="basket-content">
                 <h3>Veggie Stack Basket</h3>
+                <hr>
                 <div id="selected-items">
                     <ul></ul>
                 </div>
@@ -66,7 +67,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <p>Veggie Stack is the farm and the market brought to your doorstep. We are just a click away.</p>
                 </div>
                 <a href="https://wa.me/27813872713" id="homeBtn">
-                    <button type="button" id="order-now" class="sliding-bg">order now</button>
+                    <button type="button" id="order-now" class="sliding-bg button">Order Now</button>
                 </a>
             </div>
             <div id="home-image">
@@ -173,7 +174,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 </ol>
                 <hr>
                 <p>
-                    Please note that we are currently operating on a pay on delivery basis while we working
+                    Please note that we are currently operating on a pay on delivery basis while we work
                     towards full online ordering and building trust.
                 </p>
             </div>
@@ -186,67 +187,73 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
             <div id="packages-content">
                 <div class="package" id="sff">
                     <h3>Stir Fry Fiesta</h3>
+                    <p class="rands"><b>R</b>120.00</p>
                     <img src="https://th.bing.com/th/id/OIP.0mc-CkSlX4DQ39OwqlBhcQHaHa?w=500&h=500&rs=1&pid=ImgDetMain" 
                     alt="stir fry veggies">
                     <p>
                         Includes a variety of veggies perfect for stir-frying, such as bell peppers, broccoli, carrots, and snap peas.
                     </p>
-                    <button type="button" class="add-btn" id="addSFF" onclick="addItemToList()" data-product-name="Stir Fry Fiesta" data-product-price="120">
+                    <button type="button" class="add-btn button" id="addSFF" onclick="addItemToList()" data-product-name="Stir Fry Fiesta" data-product-price="120">
                         add to basket</button>
                 </div>
                 
                 <div class="package" id="sss">
                     <h3>Seasonal Splendor Selection</h3>
+                    <p class="rands"><b>R</b>150.00</p>
                     <img src="https://health.chosun.com/site/data/img_dir/2023/06/20/2023062002079_0.jpg" 
                     alt="seasonal fruits and veggies">
                     <p>
                         Features a rotating selection of seasonal fruits and veggies sourced fresh from local farms.
                     </p>
-                    <button type="button" class="add-btn" id="addSSS" onclick="addItemToList()" data-product-name="Seasonal Splendor Selection" data-product-price="200"> 
+                    <button type="button" class="add-btn button" id="addSSS" onclick="addItemToList()" data-product-name="Seasonal Splendor Selection" data-product-price="150"> 
                         add to basket</button>
                 </div>
                 
                 <div class="package" id="sbb">
                     <h3>Stew Brew Basket</h3>
+                    <p class="rands"><b>R</b>150.00</p>
                     <img src="https://www.vegkitchen.com/wp-content/uploads/2022/06/sweet-potato-lentil-soup-9-of-9-500x500.jpg" 
                     alt="stew veggies">
                     <p>
                         Contains root vegetables like potatoes, carrots, onions, and hearty greens ideal for stewing.
                     </p>
-                    <button type="button" class="add-btn" id="adSBB" onclick="addItemToList()" data-product-name="Stew Brew Basket" data-product-price="120"> 
+                    <button type="button" class="add-btn button" id="adSBB" onclick="addItemToList()" data-product-name="Stew Brew Basket" data-product-price="150"> 
                         add to basket</button>
                 </div>
                 
                 <div class="package" id="lgt">
                     <h3>Leafy Green Team</h3>
+                    <p class="rands"><b>R</b>100.00</p>
                     <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1mph5v.img?w=600&h=400&m=4&q=55" 
                     alt="leafy veggies">
                     <p>
                         Offers a mix of leafy greens like spinach, kale, lettuce, and Swiss chard for salads or sautéing.
                     </p>
-                    <button type="button" class="add-btn" id="addLGT" onclick="addItemToList()" data-product-name="Leafy Green Team" data-product-price="100">
+                    <button type="button" class="add-btn button" id="addLGT" onclick="addItemToList()" data-product-name="Leafy Green Team" data-product-price="100">
                         add to basket</button>
                 </div>
                 
                 <div class="package" id="fbt">
                     <h3>Fresh Blend Trend</h3>
+                    <p class="rands"><b>R</b>120.00</p>
                     <img src="https://media.istockphoto.com/photos/glasses-with-fresh-organic-vegetable-and-fruit-juices-picture-id1202072753?b=1&k=20&m=1202072753&s=170667a&w=0&h=XeZeHhe6fpm3C3SJDWYdn_bibom7Q3vJY3I59Quarns=" 
                     alt="fruits and veggies">
                     <p>
                         Combines a variety of fruits and veggies suitable for snacking, salads, or blending into smoothies.
                     </p>
-                    <button type="button" class="add-btn" id="addFBT" onclick="addItemToList()" data-product-name="Fresh Blend Trend" data-product-price="150">
+                    <button type="button" class="add-btn button" id="addFBT" onclick="addItemToList()" data-product-name="Fresh Blend Trend" data-product-price="120">
                         add to basket</button>
                 </div>
                 
                 <div class="package" id="gtb">
                     <h3>Grill Thrill Bundle</h3>
+                    <p class="rands"><b>R</b>150.00</p>
                     <img src="https://www.mashed.com/img/gallery/mistakes-people-make-when-grilling-vegetables/intro-1618854824.jpg" 
                     alt="braaiand grill veggies">
                     <p>
                         Curates veggies that are perfect for grilling, such as zucchini, eggplant, mushrooms, and bell peppers.
                     </p>
-                    <button type="button" class="add-btn" id="addGTB" onclick="addItemToList()" data-product-name="Grill Thrill Bundle" data-product-price="100">
+                    <button type="button" class="add-btn button" id="addGTB" onclick="addItemToList()" data-product-name="Grill Thrill Bundle" data-product-price="150">
                         add to basket</button>
                 </div>
             </div>
@@ -267,18 +274,40 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <input type="email" name="email" id="email" placeholder="example@gmail.com">
                     <input type="tel" name="phone" id="phone" placeholder="+27123456789">
                     <textarea name="message" id="message" cols="30" rows="10" placeholder="leave a message"></textarea>
-                    <button type="submit" title="submit" onclick="temporaryMessage()" id="submit-btn">Submit</button>
+                    <button type="submit" title="submit" onclick="temporaryMessage()" id="submit-btn" class="button sliding-bg">Submit</button>
                 </div>
             </div>
         </section>
         <!-- contact section ends -->
+
+        <!-- testimonials section starts -->
+<section id="testimonials">
+    <h1 id="testimonials-header">Testimonials</h1>
+    <div class="testimonial">
+        <img src="testimonial1.jpg" alt="Customer 1">
+        <p>"I love the freshness and quality of Veggie Stack's produce. It's like having a farmer's market at my doorstep!"</p>
+        <cite>- John Doe</cite>
+    </div>
+    <div class="testimonial">
+        <img src="testimonial2.jpg" alt="Customer 2">
+        <p>"Veggie Stack has made it so convenient to eat healthy. Their delivery service is top-notch!"</p>
+        <cite>- Jane Smith</cite>
+    </div>
+    <div class="testimonial">
+        <img src="testimonial3.jpg" alt="Customer 3">
+        <p>"I've been a customer for months now, and I'm always impressed by the variety and freshness of their produce."</p>
+        <cite>- Michael Johnson</cite>
+    </div>
+</section>
+<!-- testimonials section ends -->
+
     </main>
     <!-- main section ends -->
     
     <!-- temporary message start -->
     <div id="temp-message" class="hidden">
-        <h2>🛠️...feature coming soon...🛠️</h2>
-        <p>tishbite digital sincerely apologizes for the glitch. We are currently working on this feature</p>
+        <h2>🛠️...function coming soon...🛠️</h2>
+        <p>Tishbite digital sincerely apologizes for the glitch. We are currently working on this feature</p>
         <button class="apology-button" type="button" onclick="hideApology()">close</button>
     </div>
     <!-- temporary message end -->

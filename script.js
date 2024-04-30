@@ -72,16 +72,23 @@ document.addEventListener("DOMContentLoaded", function() {
         basketTab.classList.toggle("hidden");
     });
 
-// Function to generate a code summarizing the contents of the basket
+// Function to generate a code summarizing the contents of the basket including the total amount due
 const generateBasketCode = () => {
     let code = "Basket Summary:\n";
     const items = document.querySelectorAll('.item');
+    let totalPrice = 0; // Initialize total price variable
+
     items.forEach(item => {
         const itemName = item.querySelector('.name').textContent;
         const quantity = item.querySelector('.quantity').textContent.trim().split(' ')[1];
-        const price = item.querySelector('.price').textContent;
-        code += `${itemName}: ${quantity} x ${price}\n`;
+        const price = parseFloat(item.querySelector('.price').textContent.substring(1)); // Parse price as float
+        const itemTotalPrice = price * parseInt(quantity); // Calculate total price for this item
+        totalPrice += itemTotalPrice; // Accumulate total price
+        code += `${itemName}: ${quantity} x ${price.toFixed(2)} = R${itemTotalPrice.toFixed(2)}\n`; // Append item details to code
     });
+
+    code += `Total Amount Due: R${totalPrice.toFixed(2)}\n`; // Append total amount due to code
+
     return code;
 };
 
@@ -157,7 +164,7 @@ submitButton.addEventListener("click", (event) => {
     };
 
     const openLinkedIn = () => {
-        alert("🛠️ ...Apologies user, the site is still being developed for your best experience... 🛠️");
+        temporaryMessage();
     };
 
     // Initialize an object to hold counts for each product
@@ -180,7 +187,7 @@ const addItemToList = (itemName, itemPrice) => {
 
         const listItem = document.createElement("div");
         listItem.classList.add("item");
-        listItem.setAttribute("data-name", itemName); // Add data attribute for easy access
+        listItem.setAttribute("data-name", itemName);
 
         const nameSpan = document.createElement("span");
         nameSpan.textContent = itemName;

@@ -1,3 +1,4 @@
+
 /* global styles */
 * {
     margin: 0;
@@ -23,16 +24,17 @@ hr {
 .button {
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-family: Arial, sans-serif;
     font-size: 1rem;
-    font-weight: 900;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    background: rgba(245, 245, 245, .4);
 }
 
 .button:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .sliding-bg {
@@ -195,14 +197,15 @@ nav {
     z-index: 5;
     width: 50%;
     height: 80vh;
-    background: url("https://thumbs.dreamstime.com/b/scooter-fruits-vegetables-basket-close-up-shot-full-196343435.jpg");
+    background: rgba(149, 79, 79, 0.6);
     overflow: scroll;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 
 #basket-content {
-    background: rgba(245, 245, 245, .5);
+    background: linear-gradient(to bottom right, rgb(78, 123, 91), rgb(151, 94, 67));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
     border-radius: 10px;
     height: 100%;
     width: auto;
@@ -221,68 +224,14 @@ nav {
     padding-bottom: 0;
 }
 
-/* Checkout Button */
 #checkout {
-    position: relative;
-    overflow: hidden;
-    background: none;
-    color: #333;
-    padding: 10px 20px;
-    border: 2px solid darkgreen;
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: 900;
-    cursor: pointer;
+    border: 2px solid black;
+    margin: .5rem;
 }
 
-#checkout:hover::after {
-    left: 0;
-    transform: scale(1.2);
-}
-
-#checkout::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(185, 125, 15, .6);
-    transition: all 0.3s ease; 
-    z-index: 1;
-}
-
-  /* Clear Button */
 #clear {
-    position: relative;
-    overflow: hidden;
-    background: none;
-    color: #333;
-    padding: 8px 12px;
-    border: 2px solid rgb(185, 125, 15);
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 900;
-    cursor: pointer;
-}
-
-#clear:hover::after {
-    left: 0;
-    transform: scale(1.2);
-}
-
-#clear::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 100, 0, .6);
-    transition: all 0.3s ease;
-    z-index: 1;
+    border: 2px solid red;
+    margin: .5rem;
 }
 
 #basket-icon {
@@ -306,17 +255,17 @@ nav {
 
 .name {
     font-weight: bold;
-    color: green;
+    color: rgb(11, 83, 11);
 }
 
 .quantity {
     margin-left: 5px;
-    color: red;
+    color: rgb(167, 1, 1);
 }
 
 .price {
     margin-left: 10px;
-    color: green;
+    color: rgb(11, 83, 11);
 }
 
 /* CSS for basket summary pop-up */
@@ -375,6 +324,7 @@ nav {
     margin-top: 3rem;
     padding: 3rem 8% 2rem;
     font-size: large;
+    width: 100%;
     height: 100%;
     display: grid;
     grid-template-rows: 90% 10%;
@@ -417,7 +367,7 @@ nav {
 
 #home-image img {
     height: 100%;
-    width: auto;
+    width: 100%;
 }
 
 #home-social {
@@ -491,6 +441,7 @@ nav {
     background: rgb(182, 206, 182);
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .row {
@@ -516,6 +467,9 @@ nav {
     padding: 1rem;
     width: 105%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #about-image img {
@@ -648,7 +602,7 @@ article p {
 }
 
 /* packages specific styles */
-#packages {
+#products {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -658,10 +612,27 @@ article p {
     height: auto;
 }
 
-#packages-header {
+#products-header {
     text-align: center;
     padding: 2rem;
     font-family: "Merriweather", sans-serif;
+}
+
+#products-content {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.product {
+    background-color: white;
+    border-radius: .75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all .3s ease-in-out;
+
 }
 
 #packages-content {
@@ -679,7 +650,7 @@ article p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: .5rem;
     gap: 1rem;
     width: 100%;
     height: auto;
@@ -707,7 +678,7 @@ article p {
 
 .package img {
     width: 100%;
-    height: 15rem;
+    height: 10rem;
     border-radius: 10px;
 }
 
@@ -904,7 +875,7 @@ footer {
     /* basket specific queries */
     #basket-tab {
         width: 80%;
-        top: 12%;
+        top: 14%;
         height: 80vh;
     }
 
@@ -913,7 +884,7 @@ footer {
     }
 
     #basket-tab h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     #checkout,
@@ -988,16 +959,19 @@ footer {
 
     #checkout,
     #clear {
-        margin: 1rem;
+        margin: .5rem;
     }
 
     /* home specisfic qeries */
     #home {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        padding: 0;
     }
     #welcome-text {
-        height: 90vh;
+        height: 100%;
+        width: 100%;
         text-align: center;
         background: url("https://static.cosaporto.it/media/2020/03/vegfruit-basket.jpg") center fixed;
     }
@@ -1010,7 +984,9 @@ footer {
         width: 100%;
         height: auto;
         padding: 1rem;
-        margin-bottom: .5rem;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
     }
     .text-container {
         background: rgba(245, 245, 245, .6);
@@ -1027,18 +1003,19 @@ footer {
 
     /* about specific queries */
     #about {
-        padding: .5rem;
-        margin-top: 0;
+        padding: .1rem;
+        margin: 0;
     }
     
     .row {
         display: flex;
         flex-direction: column;
+        padding: 0;
     }
 
     /* packages specific queries */
-    #packages {
-        padding: .6rem;
+    #products {
+        padding: .2rem;
     }
 
     #packages-content {

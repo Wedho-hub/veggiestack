@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <!-- google fonts links -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<!-- font awsome cdn link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- custom css link -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <!-- header section starts -->
+        <header>
+            <div class="logo">
+                <a href="#home"><img src="images\veggie-icon.png" alt="vegetables in a basket icon"></a>
+                <h3>veggie stack</h3>
+            </div>
+            <button id="toggler" type="button" title="menu-toggler" onclick="toggleNavbar()">
+                <ion-icon name="menu" title="open/close"></ion-icon>
+            </button>
+            <nav id="navbar">
+                <ul class="menu-list">
+                    <li class="menu-items"><a href="../index.html">home</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- main section starts -->
+        <main id="blog">
+            <section id="blog-welcome">
+                <div class="blog-welcome-content">
+                    <h1>Fruit And Veggie Blog Page</h1>
+                    <p> On this platform everybody is welcome to share anything fresh food and vegetable related. 
+                        From recipes, lifestyle, gardening, diy and even feedback on other contributor's article.                    
+                    </p>
+                    <button type="button" id="contribute" title="contribute" class="button sliding-bg" onclick="openModal()">Contribute</button>
+
+                    <!-- Modal -->
+                <div id="contribute-modal" class="modal">
+                <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Your Contributions Are Valued</h2>
+                            <p><i class="fa-solid fa-folder-open"></i>&nbsp;Prepare your content (text, pictures, videos) first and then share your idea in a summary</p>
+                            <p><i class="fa-solid fa-share"></i>&nbsp;Forward all your ideas to our WhatsApp chat by pressing the <em><b>"Go Ahead"</b></em> button</p>
+                            <p><i class="fa-solid fa-thumbs-up"></i>&nbsp;Your idea summary will be evaluated, and the blog will be posted afterward with your name on it if you so wish.</p>
+                            <button id="whatsapp-btn">Go Ahead</button>
+                        </div>
+                </div>
+
+                </div>
+            </section>
+
+            <section id="article-container">
+                <article>
+                    <h2 class="article-title">Who Needs More Fruits And Vegetables?</h2>
+                    <span class="date"><em>10 May 2024</em></span>
+                    <img src="" alt="">
+                    <p class="blog-textShow">Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                        Architecto nam incidunt dolorem? Ut nihil voluptate quis excepturi natus, culpa inventore.
+                    </p>
+                    <p class="blog-text hidden">Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                        Architecto nam incidunt dolorem? Ut nihil voluptate quis excepturi natus, culpa inventore.
+                    </p>
+                    <p class="blog-text hidden">Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                        Architecto nam incidunt dolorem? Ut nihil voluptate quis excepturi natus, culpa inventore.
+                    </p>
+                    <button type="button" class="readmore-btn blog-readmore" onclick="toggleText()">Read More <ion-icon name="chevron-forward"></ion-icon></button>
+                    <button type="button" class="readmore-btn blog-readLess hidden" onclick="toggleText()">Read Less <ion-icon name="chevron-up"></ion-icon></button>
+                </article>
+            </section>
+            
+        </main>
+        <!-- main section ends -->
+
+            <!-- footer section starts -->
+    <footer>
+        <div class="logo">
+            <a href="#home"><img src="images\veggie-icon.png" alt="vegetables in a basket icon"></a>
+            <h3>veggie stack</h3>
+        </div>
+        <div class="quote">
+            <p>"Fresh food, like fresh air, is fundamental to good health. In its simplicity lies its power to heal and rejuvenate."</p>
+        </div>
+        <div class="details">
+            <p><ion-icon name="mail"></ion-icon> info@tishbitedigital.co.za</p>
+                <p><ion-icon name="call"></ion-icon>/<ion-icon name="logo-whatsapp"></ion-icon> +27813872713</p>
+        </div>
+        <div id="sign-off">
+            <em>&copy; Veggie Stack 2024 - All rights reserved | Developed by Tishbite Digital</em>
+        </div>
+    </footer>
+    <!-- footer section ends -->
+
+
+
+        <!-- ionic icons tag -->
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        
+        <!-- custom javaScript tag -->
+        <script src="script.js"></script>
+</body>
+</html>

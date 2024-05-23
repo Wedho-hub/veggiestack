@@ -337,14 +337,13 @@ window.addEventListener("click", (event) => {
 
 // When the user clicks on the WhatsApp button, open WhatsApp
 whatsappBtn.addEventListener("click", () => {
-  // Replace the URL with your WhatsApp chat link
-    window.open("https://wa.link/your-whatsapp-link", "_blank");
+    window.open("https://wa.me/27813872713", "_blank");
 });
 
 // Get the contribute button
 const contributeBtn = document.getElementById("contribute");
 
 // Add event listener to the contribute button
-contributeBtn.addEventListener("click", openModal);
-
-
+// contributeBtn.addEventListener("click", () => {
+//     window.open("https://wa.me/27813872713", "_blank");
+// });

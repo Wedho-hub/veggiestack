@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let code = "Basket Summary:\n";
         const items = document.querySelectorAll('.item');
         let totalPrice = 0; // Initialize total price variable
+        const deliveryFee = 60; // Flat delivery fee
 
         items.forEach(item => {
             const itemName = item.querySelector('.name').textContent;
@@ -84,9 +85,11 @@ document.addEventListener("DOMContentLoaded", function() {
             const price = parseFloat(item.querySelector('.price').textContent.substring(1)); // Parse price as float
             const itemTotalPrice = price * parseInt(quantity); // Calculate total price for this item
             totalPrice += itemTotalPrice; // Accumulate total price
-            code += `${itemName}: ${quantity} x ${price.toFixed(2)} = R${itemTotalPrice.toFixed(2)}\n`; // Append item details to code
+            code += `${itemName}: ${quantity} x R${price.toFixed(2)} = R${itemTotalPrice.toFixed(2)}\n`; // Append item details to code
         });
 
+        code += `Delivery Fee: R${deliveryFee.toFixed(2)}\n`;
+        totalPrice += deliveryFee; // Add delivery fee to total price
         code += `Total Amount Due: R${totalPrice.toFixed(2)}\n`;
 
         return code;
@@ -178,15 +181,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (productCounts[itemName]) {
             // Increment the quantity
             productCounts[itemName]++;
-
-            // Update the quantity span for the existing item
-            const existingItem = document.querySelector(`.item[data-name="${itemName}"]`);
-            const quantitySpan = existingItem.querySelector('.quantity');
-            quantitySpan.textContent = ` x ${productCounts[itemName]}`;
         } else {
             // Create list item if it's a new product
             productCounts[itemName] = 1;
-
+            
             const listItem = document.createElement("div");
             listItem.classList.add("item");
             listItem.setAttribute("data-name", itemName);
@@ -197,153 +195,152 @@ document.addEventListener("DOMContentLoaded", function() {
             listItem.appendChild(nameSpan);
 
             const quantitySpan = document.createElement("span");
-            quantitySpan.textContent = ` x ${productCounts[itemName]}`;
+            quantitySpan.textContent = ` Quantity: ${productCounts[itemName]}`;
             quantitySpan.classList.add("quantity");
             listItem.appendChild(quantitySpan);
 
             const priceSpan = document.createElement("span");
-            priceSpan.textContent = `R${itemPrice.toFixed(2)}`;
+            priceSpan.textContent = ` @ R${itemPrice.toFixed(2)}`;
             priceSpan.classList.add("price");
             listItem.appendChild(priceSpan);
+
+            const addQuantityBtn = document.createElement("button");
+            addQuantityBtn.textContent = "+";
+            addQuantityBtn.classList.add("add-quantity");
+            listItem.appendChild(addQuantityBtn);
+
+            const subtractQuantityBtn = document.createElement("button");
+            subtractQuantityBtn.textContent = "-";
+            subtractQuantityBtn.classList.add("subtract-quantity");
+            listItem.appendChild(subtractQuantityBtn);
 
             selectedItems.appendChild(listItem);
         }
 
-        // Function to update the total amount due
-        const updateTotalDue = () => {
-            let totalDue = 0;
-            Object.entries(productCounts).forEach(([itemName, quantity]) => {
-                const itemPrice = parseFloat(document.querySelector(`.item[data-name="${itemName}"] .price`).textContent.substring(1));
-                totalDue += itemPrice * quantity;
-            });
-            totalDueSpan.textContent = `Total Due: R${totalDue.toFixed(2)}`;
-        };
-
-        // Update the total quantity in the counter
-        let totalQuantity = 0;
-        Object.values(productCounts).forEach(quantity => {
-            totalQuantity += quantity;
-        });
-        counter.textContent = totalQuantity;
-
-        // Update the total amount due
-        updateTotalDue();
+        updateQuantityAndTotal(itemName, itemPrice);
     };
 
-    // Select all elements with class .add-btn
-    const addButtons = document.querySelectorAll('.add-btn');
+    // Function to update the quantity and total due
+    const updateQuantityAndTotal = (itemName, itemPrice) => {
+        const listItem = document.querySelector(`.item[data-name="${itemName}"]`);
+        listItem.querySelector('.quantity').textContent = ` Quantity: ${productCounts[itemName]}`;
 
-    // Event listener for each add button
-    addButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Get product details from the button's data attributes
-            const productName = button.getAttribute('data-product-name');
-            const productPrice = parseFloat(button.getAttribute('data-product-price'));
+        // Update total quantity and total due
+        let totalQuantity = 0;
+        let totalDue = 0;
+        Object.keys(productCounts).forEach(name => {
+            const quantity = productCounts[name];
+            const price = parseFloat(document.querySelector(`.item[data-name="${name}"] .price`).textContent.substring(3));
+            totalQuantity += quantity;
+            totalDue += price * quantity;
+        });
+        counter.textContent = totalQuantity;
+        totalDueSpan.textContent = totalDue.toFixed(2);
+    };
 
-            // Add the item to the list
-            addItemToList(productName, productPrice);
+    // Attach click event listener to all "add-to-basket" buttons
+    document.querySelectorAll('.add-to-basket').forEach(button => {
+        button.addEventListener("click", () => {
+            const itemName = button.getAttribute('data-name');
+            const itemPrice = parseFloat(button.getAttribute('data-price'));
+            addItemToList(itemName, itemPrice);
         });
     });
 
-    // Clear basket function
+    // Function to clear the basket
     const clearBasket = () => {
-        // Clear the product counts
         productCounts = {};
-
-        // Clear the selected items list
-        selectedItems.innerHTML = '';
-
-        // Reset the total quantity in the counter
-        counter.textContent = '0';
-
-        // Reset the total amount due
-        totalDueSpan.textContent = 'Total Due: R0.00';
+        counter.textContent = 0;
+        totalDueSpan.textContent = "0.00";
+        selectedItems.innerHTML = "";
     };
 
     clearBtn.addEventListener("click", clearBasket);
-});
 
-// blog functionality
-document.addEventListener('DOMContentLoaded', () => {
-    document.addEventListener('click', (event) => {
-        const target = event.target;
-
-        // Check if the clicked element is a "Read More" button
-        if (target.classList.contains('readmore-btn')) {
-            // Select the hidden text associated with the clicked button
-            const hiddenText = target.parentNode.querySelectorAll('.blog-text.hidden');
-
-            // Loop through each hidden text and show it
-            hiddenText.forEach(element => {
-                element.classList.remove('hidden');
-            });
-
-            // Hide the "Read More" button
-            target.classList.add('hidden');
-
-            // Show the "Read Less" button
-            const readLessButton = target.parentNode.querySelector('.blog-readLess');
-            readLessButton.classList.remove('hidden');
+    // Function to handle adding and subtracting quantities
+    const handleQuantityChange = (itemName, isAdding) => {
+        if (isAdding) {
+            productCounts[itemName]++;
+        } else {
+            if (productCounts[itemName] > 1) {
+                productCounts[itemName]--;
+            }
         }
+        updateQuantityAndTotal(itemName, parseFloat(document.querySelector(`.item[data-name="${itemName}"] .price`).textContent.substring(3)));
+    };
 
-        // Check if the clicked element is a "Read Less" button
-        if (target.classList.contains('blog-readLess')) {
-            // Select the hidden text associated with the clicked button
-            const hiddenText = target.parentNode.querySelectorAll('.blog-text');
-
-            // Loop through each hidden text and hide it
-            hiddenText.forEach(element => {
-                element.classList.add('hidden');
-            });
-
-            // Hide the "Read Less" button
-            target.classList.add('hidden');
-
-            // Show the "Read More" button
-            const readMoreButton = target.parentNode.querySelector('.readmore-btn');
-            readMoreButton.classList.remove('hidden');
+    // Delegate click events for quantity adjustment buttons
+    selectedItems.addEventListener("click", (event) => {
+        if (event.target.classList.contains("add-quantity") || event.target.classList.contains("subtract-quantity")) {
+            const itemName = event.target.closest(".item").getAttribute("data-name");
+            const isAdding = event.target.classList.contains("add-quantity");
+            handleQuantityChange(itemName, isAdding);
         }
     });
 });
 
-// Get the modal
-const modal = document.getElementById("contribute-modal");
+document.addEventListener('DOMContentLoaded', () => {
+    const basket = {};
+    const counterElement = document.getElementById('counter');
+    const basketListElement = document.getElementById('basket-list');
+    const addButtons = document.querySelectorAll('.add-btn');
+    const incrementButtons = document.querySelectorAll('.increment-btn');
+    const decrementButtons = document.querySelectorAll('.decrement-btn');
 
-// Get the <span> element that closes the modal
-const span = document.querySelector(".close");
+    addButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const product = button.getAttribute('data-product');
+            if (basket[product]) {
+                basket[product]++;
+            } else {
+                basket[product] = 1;
+            }
+            updateCounter();
+            updateBasketContents();
+        });
+    });
 
-// Get the WhatsApp button
-const whatsappBtn = document.getElementById("whatsapp-btn");
+    incrementButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const product = button.getAttribute('data-product');
+            if (basket[product]) {
+                basket[product]++;
+            } else {
+                basket[product] = 1;
+            }
+            updateCounter();
+            updateBasketContents();
+        });
+    });
 
-// Function to open the modal
-const openModal = () => {
-    modal.style.display = "block";
-};
+    decrementButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const product = button.getAttribute('data-product');
+            if (basket[product]) {
+                basket[product]--;
+                if (basket[product] <= 0) {
+                    delete basket[product];
+                }
+            }
+            updateCounter();
+            updateBasketContents();
+        });
+    });
 
-// Function to close the modal
-const closeModal = () => {
-    modal.style.display = "none";
-};
+    function updateCounter() {
+        let totalItems = 0;
+        for (const product in basket) {
+            totalItems += basket[product];
+        }
+        counterElement.textContent = totalItems;
+    }
 
-// When the user clicks on <span> (x), close the modal
-span.addEventListener("click", closeModal);
-
-// When the user clicks anywhere outside of the modal, close it
-window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-        closeModal();
-}
+    function updateBasketContents() {
+        basketListElement.innerHTML = '';
+        for (const product in basket) {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${product}: ${basket[product]}`;
+            basketListElement.appendChild(listItem);
+        }
+    }
 });
-
-// When the user clicks on the WhatsApp button, open WhatsApp
-whatsappBtn.addEventListener("click", () => {
-    window.open("https://wa.me/27813872713", "_blank");
-});
-
-// Get the contribute button
-const contributeBtn = document.getElementById("contribute");
-
-// Add event listener to the contribute button
-// contributeBtn.addEventListener("click", () => {
-//     window.open("https://wa.me/27813872713", "_blank");
-// });

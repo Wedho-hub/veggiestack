@@ -4,119 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    <!-- google fonts links -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Google fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-<!-- font awsome cdn link -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- custom css link -->
-<link rel="stylesheet" href="style.css">
+    <!-- Custom CSS link -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <!-- header section starts -->
-        <header>
-            <div class="logo">
-                <a href="#home"><img src="images\veggie-icon.png" alt="vegetables in a basket icon"></a>
-                <h3>veggie stack</h3>
-            </div>
-            <button id="toggler" type="button" title="menu-toggler" onclick="toggleNavbar()">
-                <ion-icon name="menu" title="open/close"></ion-icon>
-            </button>
-            <nav id="navbar">
-                <ul class="menu-list">
-                    <li class="menu-items"><a href="../index.html">home</a></li>
-                </ul>
-            </nav>
-        </header>
-        <!-- main section starts -->
-        <main id="blog">
-            <section id="blog-welcome">
-                <div class="blog-welcome-content">
-                    <h1>Welcome to our Blog Page</h1>
-                    <p> On this platform everybody is welcome to share anything fresh food and vegetable related. 
-                        From recipes, lifestyle, gardening, and anything veggie related. Be a blog contributor/author                    
-                    </p>
-                    <button type="button" id="contribute" title="contribute" class="button sliding-bg" onclick="openModal()">Contribute</button>
+    <!-- Header section starts -->
+    <header>
+        <div class="logo">
+            <a href="#home"><img src="images/veggie-icon.png" alt="vegetables in a basket icon"></a>
+            <h3>veggie stack</h3>
+        </div>
+        <button id="toggler" type="button" title="menu-toggler" onclick="toggleNavbar()">
+            <ion-icon name="menu" title="open/close"></ion-icon>
+        </button>
+        <nav id="navbar">
+            <ul class="menu-list">
+                <li class="menu-items"><a href="../index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Header section ends -->
 
-                    <!-- Modal -->
+    <!-- Main section starts -->
+    <main id="blog">
+        <section id="blog-welcome">
+            <div class="blog-welcome-content">
+                <h1>Welcome to our Blog Page</h1>
+                <p>On this platform everybody is welcome to share anything fresh food and vegetable related. From recipes, lifestyle, gardening, and anything veggie related. Be a blog contributor/author</p>
+                <button type="button" id="contribute" title="contribute" class="button sliding-bg" onclick="openModal()">Contribute</button>
+
+                <!-- Modal -->
                 <div id="contribute-modal" class="modal">
-                <!-- Modal content -->
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h2>Your Contributions Are Valued</h2>
-                            <p><i class="fa-solid fa-folder-open"></i>&nbsp;Prepare your content (text, pictures, videos) first and then share your idea in a summary</p>
-                            <p><i class="fa-solid fa-share"></i>&nbsp;Forward all your ideas to our WhatsApp chat by pressing the <em><b>"Go Ahead"</b></em> button</p>
-                            <p><i class="fa-solid fa-thumbs-up"></i>&nbsp;Your idea summary will be evaluated, and the blog will be posted afterward with your name on it if you so wish.</p>
-                            <button id="whatsapp-btn" type="button">Go Ahead</button>
-                        </div>
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Your Contributions Are Valued</h2>
+                        <p><i class="fa-solid fa-folder-open"></i>&nbsp;Prepare your content (text, pictures, videos) first and then share your idea in a summary</p>
+                        <p><i class="fa-solid fa-share"></i>&nbsp;Forward all your ideas to our WhatsApp chat by pressing the <em><b>"Go Ahead"</b></em> button</p>
+                        <p><i class="fa-solid fa-thumbs-up"></i>&nbsp;Your idea summary will be evaluated, and the blog will be posted afterward with your name on it if you so wish.</p>
+                        <button id="whatsapp-btn" type="button">Go Ahead</button>
+                    </div>
                 </div>
+            </div>
+        </section>
+        <br>
+        <hr>
+        <section id="article-container">
+            <article>
+                <h2 class="article-title">Cape Town! Welcome to Veggie Stack</h2>
+                <span class="date"><em>24 May 2024</em></span>
+                <br>
+                <img src="https://a.cdn-hotels.com/gdcs/production37/d996/ca2a82aa-2617-4fac-8e5d-94afa4324d5d.jpg?impolicy=fcrop&w=800&h=533&q=medium" alt="Cape Town">
+                <p class="blog-text Show">Tired of grocery store hassles and looking for a convenient way to get the freshest fruits and veggies delivered straight to your doorstep? Look no further than Veggie Stack! Our online platform offers a wide selection of fresh produce and aims to aid your healthy lifestyle. We are passionate about making healthy eating easy and accessible for everyone.</p>
+                <br>
+                <h4 class="blog-text hidden">How it all started</h4>
+                <p class="blog-text hidden">At Veggie Stack, our journey began with a simple but powerful idea: to make fresh, high-quality fruits and vegetables accessible to everyone, right from the comfort of their homes. The idea was inspired by a personal experience that highlighted the challenges many people face in getting fresh produce.</p>
+                <br>
+                <h4 class="blog-text hidden">Inspiration</h4>
+                <p class="blog-text hidden">Growing up in a small town, I always had access to fresh fruits and vegetables from local farms and my own vegetable garden. However, after moving to the mother city for work, I realized how difficult it was to find the same quality of produce without spending a lot of time and money. Grocery stores often had limited selections, and the produce wasn't always as fresh as it should be. This sparked an idea: why not bring farm-fresh produce directly to people's doors?</p>
+                <br>
+                <h4 class="blog-text hidden">The Vision</h4>
+                <p class="blog-text hidden">The vision is clear: to create an online delivery service that offers the freshest, most nutritious fruits and vegetables, sourced from local farms and trusted suppliers. By doing so, we aim to support local agriculture, reduce food miles, and provide our customers with produce that tastes as good as it looks.</p>
+                <br>
+                <h4 class="blog-text hidden">Looking Ahead</h4>
+                <p class="blog-text hidden">We shall continue to innovate and find new ways to serve our customers better. Whether it's through adding new seasonal items, creating subscription boxes, or sharing delicious recipes and nutritional tips on our blog, we are always looking to make healthy eating easier and more enjoyable for you. Buckle up Cape Town, the journey begins right here in the mother city. Please follow us on Facebook and Instagram to get updates and engage with our community.</p>
+                <img src="https://www.globalgiving.org/pfil/714/ph_714_5583.jpg" class="blog-text hidden" alt="Local Farmers">
+                <img src="https://coursehorse.imgix.net/images/course/13/main/Shop%20&%20Cook-%20Union%20Square%20Farmer's%20Market.jpg?auto=format%2Cenhance%2Ccompress&crop=entropy&fit=crop&h=630&ixlib=php-1.2.1&q=90&w=1200" class="blog-text hidden" alt="Farmers market">
+                <button type="button" class="readmore-btn blog-readmore">Read More <ion-icon name="chevron-forward"></ion-icon></button>
+                <button type="button" class="readmore-btn blog-readLess hidden">Read Less <ion-icon name="chevron-up"></ion-icon></button>
+            </article>
+        </section>
+    </main>
+    <!-- Main section ends -->
 
-                </div>
-            </section>
-            <br>
-            <hr>
-            
-            <section id="article-container">
-                <article>
-                    <h2 class="article-title">Cape Town! Welcome to Veggie Stack</h2>
-                    <span class="date"><em>24 May 2024</em></span>
-                    <br>
-                    <img src="https://a.cdn-hotels.com/gdcs/production37/d996/ca2a82aa-2617-4fac-8e5d-94afa4324d5d.jpg?impolicy=fcrop&w=800&h=533&q=medium" 
-                    alt="Cape Town">
-                    <p class="blog-text Show">
-                        Tired of grocery store hassles and looking for a convenient way to get the freshest fruits and veggies delivered straight to your doorstep?
-                        Look no further than Veggie Stack! Our online platform offers a wide selection of fresh produce and aims to aid your healthy lifestyle.
-                        We are passionate about making healthy eating easy and accessible for everyone.
-                    </p>
-                    <br>
-                    <h4 class="blog-text hidden">How it all started</h4>
-                    <p class="blog-text hidden">
-                        At Veggie Stack, our journey began with a simple but powerful idea: to make fresh, high-quality fruits and vegetables accessible to everyone, 
-                        right from the comfort of their homes. The idea was inspired by a personal experience that highlighted the challenges 
-                        many people face in getting fresh produce.
-                    </p>
-                    <br>
-                    <h4 class="blog-text hidden">Inspiration</h4>
-                    <p class="blog-text hidden">
-                        Growing up in a small town, I always had access to fresh fruits and vegetables from local farms and my own vegetable garden. However, after 
-                        moving to the mother city for work, I realized how difficult it was to find the same quality of produce without spending a lot of time and money.
-                        Grocery stores often had limited selections, and the produce wasn't always as fresh as it should be. This sparked an idea: why not bring 
-                        farm-fresh produce directly to people's doors?
-                    </p>
-                    <br>
-                    <h4 class="blog-text hidden">The Vision</h4>
-                    <p class="blog-text hidden">
-                        The vision is clear: to create an online delivery service that offers the freshest, most nutritious fruits and vegetables, sourced from local 
-                        farms and trusted suppliers. By doing so, we aim to support local agriculture, reduce food miles, and provide our customers with produce that 
-                        tastes as good as it looks. 
-                    </p>
-                    <br>
-                    <h4 class="blog-text hidden">Looking Ahead</h4>
-                    <p class="blog-text hidden">
-                        We shall continue to innovate and find new ways to serve our customers better. Whether it's through adding new seasonal items, creating subscription 
-                        boxes, or sharing delicious recipes and nutritional tips on our blog, we are always looking to make healthy eating easier and more enjoyable for you. 
-                        Buckle up Cape Town, the journey begins right here in the mother city. Please follow us on Facebook and Instagram to get updates and engage with our
-                        community.
-                    </p>
-                    <img src="https://www.globalgiving.org/pfil/714/ph_714_5583.jpg" 
-                    class="blog-text hidden" alt="Local Farmers">
-                    <img src="https://coursehorse.imgix.net/images/course/13/main/Shop%20&%20Cook-%20Union%20Square%20Farmer's%20Market.jpg?auto=format%2Cenhance%2Ccompress&crop=entropy&fit=crop&h=630&ixlib=php-1.2.1&q=90&w=1200" 
-                    class="blog-text hidden" alt="Farmers market">
-                    <button type="button" class="readmore-btn blog-readmore">Read More <ion-icon name="chevron-forward"></ion-icon></button>
-                    <button type="button" class="readmore-btn blog-readLess hidden">Read Less <ion-icon name="chevron-up"></ion-icon></button>
-
-                </article>
-            </section>
-            
-        </main>
-        <!-- main section ends -->
-
-            <!-- footer section starts -->
+    <!-- Footer section starts -->
     <footer>
         <div class="logo">
             <a href="#home"><img src="images\veggie-icon.png" alt="vegetables in a basket icon"></a>
@@ -127,21 +97,30 @@
         </div>
         <div class="details">
             <p><ion-icon name="mail"></ion-icon> info@tishbitedigital.co.za</p>
-                <p><ion-icon name="call"></ion-icon>/<ion-icon name="logo-whatsapp"></ion-icon> +27813872713</p>
+            <p><ion-icon name="call"></ion-icon>/<ion-icon name="logo-whatsapp"></ion-icon> +27813872713</p>
+        </div>
+        <div class="footer-social">
+            <button id="instagramBtnFooter" type="button" title="instagram" onclick="openSocialMedia()">
+                <ion-icon name="logo-instagram" class="social-icon" title="instagram" id="instagram-footer"></ion-icon>
+            </button>
+            <button id="facebookBtnFooter" type="button" title="facebook" onclick="openSocialMedia()">
+                <ion-icon name="logo-facebook" class="social-icon" title="facebook" id="facebook-footer"></ion-icon>
+            </button>
+            <button id="linkedinBtnFooter" type="button" title="linkedin" onclick="openSocialMedia()">
+                <ion-icon name="logo-linkedin" class="social-icon" title="linkedin" id="linkedin-footer"></ion-icon>
+            </button>
         </div>
         <div id="sign-off">
             <em>&copy; Veggie Stack 2024 - All rights reserved | Developed by Tishbite Digital</em>
         </div>
     </footer>
-    <!-- footer section ends -->
+    <!-- Footer section ends -->
 
+    <!-- Ionic icons tag -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-
-        <!-- ionic icons tag -->
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        
-        <!-- custom javaScript tag -->
-        <script src="script.js"></script>
+    <!-- Custom JavaScript tag -->
+    <script src="script.js"></script>
 </body>
 </html>

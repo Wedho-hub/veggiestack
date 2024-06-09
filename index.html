@@ -5,18 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veggie Stack</title>
 
-<!-- google fonts links -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 
-<!-- font awsome cdn link -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- google fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-<!-- custom css link -->
-<link rel="stylesheet" href="style.css">
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- custom css link -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- header section starts -->
@@ -30,11 +36,11 @@
         </button>
         <nav id="navbar">
             <ul class="menu-list">
-                <li class="menu-items"><a href="#home">home</a></li>
-                <li class="menu-items"><a href="#about">about</a></li>
-                <li class="menu-items"><a href="#products">products</a></li>
-                <li class="menu-items"><a href="#contact">contact</a></li>
-                <li class="menu-items"><a href="/blog.html">blog</a></li>
+                <li class="menu-items"><a href="#home">Home</a></li>
+                <li class="menu-items"><a href="#about">About</a></li>
+                <li class="menu-items"><a href="#products">Products</a></li>
+                <li class="menu-items"><a href="#contact">Contact</a></li>
+                <li class="menu-items"><a href="/blog.html">Blog</a></li>
             </ul>
         </nav>
         <span id="basket-icon"><ion-icon name="basket"></ion-icon></span>
@@ -71,15 +77,23 @@
                 </a>
             </div>
             <div id="home-image">
-                <img src="https://static.cosaporto.it/media/2020/03/vegfruit-basket.jpg" 
-                alt="basket with fruit and veg">
+                <img src="https://static.cosaporto.it/media/2020/03/vegfruit-basket.jpg" alt="basket with fruit and veg">
             </div>
-            <div id="home-social">
-                <button id="instagramBtn" type="button" title="instagram" onclick="openSocialMedia()"><ion-icon name="logo-instagram" class="social-icon" title="instagram" id="instagram"></ion-icon></button>
-                <button id="facebookBtn" type="button" title="facebook" onclick="openSocialMedia()"><ion-icon name="logo-facebook" class="social-icon" title="facebook" id="facebook"></ion-icon></button>
-                <button id="linkedinBtn" type="button" title="linkedin" onclick="openSocialMedia()"><ion-icon name="logo-linkedin" class="social-icon" title="linkedin" id="linkedin"></ion-icon></button>
+            <div id="home-promo">
+                <p>Winter Special: Get 20% off your first order!</p>
             </div>
-        </section>
+            <div id="home-sidebar">
+                <button id="instagramBtn" type="button" title="instagram" onclick="openSocialMedia()">
+                    <ion-icon name="logo-instagram" class="social-icon" title="instagram" id="instagram"></ion-icon>
+                </button>
+                <button id="facebookBtn" type="button" title="facebook" onclick="openSocialMedia()">
+                    <ion-icon name="logo-facebook" class="social-icon" title="facebook" id="facebook"></ion-icon>
+                </button>
+                <button id="linkedinBtn" type="button" title="linkedin" onclick="openSocialMedia()">
+                    <ion-icon name="logo-linkedin" class="social-icon" title="linkedin" id="linkedin"></ion-icon>
+                </button>
+            </div>
+        </section>        
         <!-- home section ends -->
         
         <!--about section starts -->
@@ -360,19 +374,19 @@
 <section id="testimonials">
     <h1 id="testimonials-header">Testimonials</h1>
     <div class="testimonial">
-        <img src="testimonial1.jpg" alt="Customer 1">
+        <img src="images\Miranda.jpg" alt="Customer 1">
         <p>"I love the freshness and quality of Veggie Stack's produce. It's like having a farmer's market at my doorstep!"</p>
-        <cite>- John Doe</cite>
+        <cite>- Miranda Dhliwayo</cite>
     </div>
     <div class="testimonial">
-        <img src="testimonial2.jpg" alt="Customer 2">
+        <img src="images\Sithole.jpg" alt="Customer 2">
         <p>"Veggie Stack has made it so convenient to eat healthy. Their delivery service is top-notch!"</p>
-        <cite>- Jane Smith</cite>
+        <cite>- Terrence Sithole</cite>
     </div>
     <div class="testimonial">
-        <img src="testimonial3.jpg" alt="Customer 3">
-        <p>"I've been a customer for months now, and I'm always impressed by the variety and freshness of their produce."</p>
-        <cite>- Michael Johnson</cite>
+        <img src="images\educare.jpg" alt="Customer 3">
+        <p>"We've been a customer for months now, and we're always impressed by the variety and freshness of their produce."</p>
+        <cite>- Nozuko Educare</cite>
     </div>
 </section>
 <!-- testimonials section ends -->
@@ -388,29 +402,44 @@
     </div>
     <!-- temporary message end -->
     
-    <!-- footer section starts -->
-    <footer>
-        <div class="logo">
-            <a href="#home"><img src="images\veggie-icon.png" alt="vegetables in a basket icon"></a>
-            <h3>veggie stack</h3>
-        </div>
-        <div class="quote">
-            <p>"Fresh food, like fresh air, is fundamental to good health. In its simplicity lies its power to heal and rejuvenate."</p>
-        </div>
-        <div class="details">
-            <p><ion-icon name="mail"></ion-icon> info@tishbitedigital.co.za</p>
-                <p><ion-icon name="call"></ion-icon>/<ion-icon name="logo-whatsapp"></ion-icon> +27813872713</p>
-        </div>
-        <div id="sign-off">
-            <em>&copy; Veggie Stack 2024 - All rights reserved | Developed by Tishbite Digital</em>
-        </div>
-    </footer>
-    <!-- footer section ends -->
+<!-- footer section starts -->
+<footer>
+    <div class="logo">
+        <a href="#home"><img src="images\veggie-icon.png" alt="vegetables in a basket icon"></a>
+        <h3>veggie stack</h3>
+    </div>
+    <div class="quote">
+        <p>"Fresh food, like fresh air, is fundamental to good health. In its simplicity lies its power to heal and rejuvenate."</p>
+    </div>
+    <div class="details">
+        <p><ion-icon name="mail"></ion-icon> info@tishbitedigital.co.za</p>
+        <p><ion-icon name="call"></ion-icon>/<ion-icon name="logo-whatsapp"></ion-icon> +27813872713</p>
+    </div>
+    <div class="footer-social">
+        <button id="instagramBtnFooter" type="button" title="instagram" onclick="openSocialMedia()">
+            <ion-icon name="logo-instagram" class="social-icon" title="instagram" id="instagram-footer"></ion-icon>
+        </button>
+        <button id="facebookBtnFooter" type="button" title="facebook" onclick="openSocialMedia()">
+            <ion-icon name="logo-facebook" class="social-icon" title="facebook" id="facebook-footer"></ion-icon>
+        </button>
+        <button id="linkedinBtnFooter" type="button" title="linkedin" onclick="openSocialMedia()">
+            <ion-icon name="logo-linkedin" class="social-icon" title="linkedin" id="linkedin-footer"></ion-icon>
+        </button>
+    </div>
+    <div id="sign-off">
+        <em>&copy; Veggie Stack 2024 - All rights reserved | Developed by Tishbite Digital</em>
+    </div>
+</footer>
+<!-- footer section ends -->
+
 
 
     <!-- ionic icons tag -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- stripe script tag -->
+    <script src="https://js.stripe.com/v3/"></script>
     
     <!-- custom javaScript tag -->
     <script src="script.js"></script>

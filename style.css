@@ -411,8 +411,9 @@ nav {
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    background-color: #f0f0f0;
-    border: 2px dashed crimson;
+    background-color: coral;
+    color: rgb(6, 61, 6);
+    border: 2px dashed darkgreen;
     border-radius: 10px;
 }
 

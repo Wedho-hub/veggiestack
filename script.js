@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
         let code = "Basket Summary:\n";
         const items = document.querySelectorAll('.item');
         let totalPrice = 0; // Initialize total price variable
-        const deliveryFee = 60; // Flat delivery fee
 
         items.forEach(item => {
             const itemName = item.querySelector('.name').textContent;
@@ -85,11 +84,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const price = parseFloat(item.querySelector('.price').textContent.substring(1)); // Parse price as float
             const itemTotalPrice = price * parseInt(quantity); // Calculate total price for this item
             totalPrice += itemTotalPrice; // Accumulate total price
-            code += `${itemName}: ${quantity} x R${price.toFixed(2)} = R${itemTotalPrice.toFixed(2)}\n`; // Append item details to code
+            code += `${itemName}: ${quantity} x ${price.toFixed(2)} = R${itemTotalPrice.toFixed(2)}\n`; // Append item details to code
         });
 
-        code += `Delivery Fee: R${deliveryFee.toFixed(2)}\n`;
-        totalPrice += deliveryFee; // Add delivery fee to total price
         code += `Total Amount Due: R${totalPrice.toFixed(2)}\n`;
 
         return code;
@@ -195,24 +192,25 @@ document.addEventListener("DOMContentLoaded", function() {
             listItem.appendChild(nameSpan);
 
             const quantitySpan = document.createElement("span");
-            quantitySpan.textContent = ` Quantity: ${productCounts[itemName]}`;
+            quantitySpan.textContent = ` x ${productCounts[itemName]}`;
             quantitySpan.classList.add("quantity");
             listItem.appendChild(quantitySpan);
 
             const priceSpan = document.createElement("span");
-            priceSpan.textContent = ` @ R${itemPrice.toFixed(2)}`;
+            priceSpan.textContent = `R${itemPrice.toFixed(2)}`;
             priceSpan.classList.add("price");
             listItem.appendChild(priceSpan);
 
-            const addQuantityBtn = document.createElement("button");
-            addQuantityBtn.textContent = "+";
-            addQuantityBtn.classList.add("add-quantity");
-            listItem.appendChild(addQuantityBtn);
+            // Add quantity adjustment buttons
+            const addButton = document.createElement("button");
+            addButton.textContent = "+";
+            addButton.classList.add("add-quantity");
+            listItem.appendChild(addButton);
 
-            const subtractQuantityBtn = document.createElement("button");
-            subtractQuantityBtn.textContent = "-";
-            subtractQuantityBtn.classList.add("subtract-quantity");
-            listItem.appendChild(subtractQuantityBtn);
+            const subtractButton = document.createElement("button");
+            subtractButton.textContent = "-";
+            subtractButton.classList.add("subtract-quantity");
+            listItem.appendChild(subtractButton);
 
             selectedItems.appendChild(listItem);
         }
@@ -220,127 +218,101 @@ document.addEventListener("DOMContentLoaded", function() {
         updateQuantityAndTotal(itemName, itemPrice);
     };
 
-    // Function to update the quantity and total due
+    // Function to update the quantity and total amount due
     const updateQuantityAndTotal = (itemName, itemPrice) => {
-        const listItem = document.querySelector(`.item[data-name="${itemName}"]`);
-        listItem.querySelector('.quantity').textContent = ` Quantity: ${productCounts[itemName]}`;
+        // Update the quantity span for the existing item
+        const existingItem = document.querySelector(`.item[data-name="${itemName}"]`);
+        const quantitySpan = existingItem.querySelector('.quantity');
+        quantitySpan.textContent = ` x ${productCounts[itemName]}`;
 
-        // Update total quantity and total due
+        // Update the total quantity in the counter
         let totalQuantity = 0;
         let totalDue = 0;
-        Object.keys(productCounts).forEach(name => {
-            const quantity = productCounts[name];
-            const price = parseFloat(document.querySelector(`.item[data-name="${name}"] .price`).textContent.substring(3));
+        Object.entries(productCounts).forEach(([name, quantity]) => {
             totalQuantity += quantity;
-            totalDue += price * quantity;
+            totalDue += parseFloat(document.querySelector(`.item[data-name="${name}"] .price`).textContent.substring(1)) * quantity;
         });
         counter.textContent = totalQuantity;
-        totalDueSpan.textContent = totalDue.toFixed(2);
+        totalDueSpan.textContent = `Total Due: R${totalDue.toFixed(2)}`;
     };
 
-    // Attach click event listener to all "add-to-basket" buttons
-    document.querySelectorAll('.add-to-basket').forEach(button => {
-        button.addEventListener("click", () => {
-            const itemName = button.getAttribute('data-name');
-            const itemPrice = parseFloat(button.getAttribute('data-price'));
-            addItemToList(itemName, itemPrice);
+    // Select all elements with class .add-btn
+    const addButtons = document.querySelectorAll('.add-btn');
+
+    // Event listener for each add button
+    addButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Get product details from the button's data attributes
+            const productName = button.getAttribute('data-product-name');
+            const productPrice = parseFloat(button.getAttribute('data-product-price'));
+
+            // Add the item to the list
+            addItemToList(productName, productPrice);
         });
     });
 
-    // Function to clear the basket
+    // Add event listeners for quantity adjustment buttons
+    selectedItems.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.classList.contains('add-quantity') || target.classList.contains('subtract-quantity')) {
+            const itemName = target.parentElement.getAttribute('data-name');
+            const itemPrice = parseFloat(target.parentElement.querySelector('.price').textContent.substring(1));
+
+            if (target.classList.contains('add-quantity')) {
+                productCounts[itemName]++;
+            } else if (target.classList.contains('subtract-quantity')) {
+                productCounts[itemName]--;
+                if (productCounts[itemName] <= 0) {
+                    delete productCounts[itemName];
+                    target.parentElement.remove();
+                }
+            }
+            updateQuantityAndTotal(itemName, itemPrice);
+        }
+    });
+
+    // Clear basket function
     const clearBasket = () => {
+        // Clear the product counts
         productCounts = {};
-        counter.textContent = 0;
-        totalDueSpan.textContent = "0.00";
-        selectedItems.innerHTML = "";
+
+        // Clear the selected items list
+        selectedItems.innerHTML = '';
+
+        // Reset the total quantity in the counter
+        counter.textContent = '0';
+
+        // Reset the total amount due
+        totalDueSpan.textContent = 'Total Due: R0.00';
     };
 
     clearBtn.addEventListener("click", clearBasket);
-
-    // Function to handle adding and subtracting quantities
-    const handleQuantityChange = (itemName, isAdding) => {
-        if (isAdding) {
-            productCounts[itemName]++;
-        } else {
-            if (productCounts[itemName] > 1) {
-                productCounts[itemName]--;
-            }
-        }
-        updateQuantityAndTotal(itemName, parseFloat(document.querySelector(`.item[data-name="${itemName}"] .price`).textContent.substring(3)));
-    };
-
-    // Delegate click events for quantity adjustment buttons
-    selectedItems.addEventListener("click", (event) => {
-        if (event.target.classList.contains("add-quantity") || event.target.classList.contains("subtract-quantity")) {
-            const itemName = event.target.closest(".item").getAttribute("data-name");
-            const isAdding = event.target.classList.contains("add-quantity");
-            handleQuantityChange(itemName, isAdding);
-        }
-    });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const basket = {};
-    const counterElement = document.getElementById('counter');
-    const basketListElement = document.getElementById('basket-list');
-    const addButtons = document.querySelectorAll('.add-btn');
-    const incrementButtons = document.querySelectorAll('.increment-btn');
-    const decrementButtons = document.querySelectorAll('.decrement-btn');
+const stripe = Stripe('your_stripe_public_key');
+const elements = stripe.elements();
+const cardElement = elements.create('card');
+cardElement.mount('#card-element');
 
-    addButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const product = button.getAttribute('data-product');
-            if (basket[product]) {
-                basket[product]++;
-            } else {
-                basket[product] = 1;
-            }
-            updateCounter();
-            updateBasketContents();
-        });
-    });
 
-    incrementButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const product = button.getAttribute('data-product');
-            if (basket[product]) {
-                basket[product]++;
-            } else {
-                basket[product] = 1;
-            }
-            updateCounter();
-            updateBasketContents();
-        });
-    });
+// const form = document.getElementById('payment-form');
+// form.addEventListener('submit', async (event) => {
+//     event.preventDefault();
 
-    decrementButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const product = button.getAttribute('data-product');
-            if (basket[product]) {
-                basket[product]--;
-                if (basket[product] <= 0) {
-                    delete basket[product];
-                }
-            }
-            updateCounter();
-            updateBasketContents();
-        });
-    });
+//     const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+//         payment_method: {
+//             card: cardElement,
+//             billing_details: {
+//                 name: 'Customer Name',
+//             },
+//         },
+//     });
 
-    function updateCounter() {
-        let totalItems = 0;
-        for (const product in basket) {
-            totalItems += basket[product];
-        }
-        counterElement.textContent = totalItems;
-    }
-
-    function updateBasketContents() {
-        basketListElement.innerHTML = '';
-        for (const product in basket) {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${product}: ${basket[product]}`;
-            basketListElement.appendChild(listItem);
-        }
-    }
-});
+//     if (error) {
+//         // Show error to your customer
+//         document.getElementById('payment-message').textContent = error.message;
+//     } else if (paymentIntent.status === 'succeeded') {
+//         // Show a success message to your customer
+//         document.getElementById('payment-message').textContent = 'Payment succeeded!';
+//     }
+// });
